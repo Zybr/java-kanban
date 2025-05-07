@@ -1,0 +1,82 @@
+@startuml
+''https://plantuml.com/class-diagram
+'
+'abstract class AbstractList
+'abstract AbstractCollection
+'interface List
+'interface Collection
+'
+'List <|-- AbstractList
+'Collection <|-- AbstractCollection
+'
+'Collection <|- List
+'AbstractCollection <|- AbstractList
+'AbstractList <|-- ArrayList
+'
+'class ArrayList {
+'Object[] elementData
+'size()
+'}
+'
+'enum TimeUnit {
+'DAYS
+'HOURS
+'MINUTES
+'}
+
+enum Status {
+    + NEW
+    + IN_PROGRESS
+    + DONE
+}
+
+class Task {
+    - id: Integer
+    - name: String
+    - description: String
+    - status: Status
+    + toString(): String
+    + hashCode(): Integer
+    + equals(Object object): boolean
+}
+Task *-- Status
+
+class EpicTask extends Task {
+}
+
+class SubTask extends Task {
+    - epicId: Integer
+}
+
+class TaskManager {
+    - lastTaskId: Integer
+    - tasks: HashMap<Integer, Task>
+    - epics: HashMap<Integer, EpicTask>
+    - subTasks: HashMap<Integer, SubTask>
+    ..List getters..
+    + getTasks(): Task[]
+    + getEpicTasks(): EpicTask[]
+    + getSubTasks(): SubTask[]
+    ..List removers..
+    + removeTasks()
+    + removeEpicTasks()
+    + removeSubTasks()
+'    ..Single Task getters..
+'    + getTask(id: Integer): Task
+'    + getEpicTask(id: Integer): EpicTask
+'    + getSubTask(id: Integer): SubTask
+    .. Common methods ..
+    + getTask(id: Integer) Task | EpicTask | SubTask
+    + removeTask(id: Integer)
+    ..Overloaded methods..
+    + createTask(task: Task | EpicTask | SubTask)
+    + updateTask(task: Task | EpicTask | SubTask)
+    ..Other..
+    + getSubsOfEpic(id: Integer): SubTask[]
+    - getEpicOfSub(id: integer): EpicTask
+    - updateEpicTaskStatus(id: integer)
+}
+TaskManager o-- Task
+
+
+@enduml
