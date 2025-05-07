@@ -27,21 +27,21 @@ public class TaskManager {
     public ArrayList<Task> getTasks() {
         return tasks.values()
                 .stream()
-                .map(Task::copy) // Return copies not avoid changing by link
+                .map(Task::copy) // Return copies to avoid changing by link
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
     public ArrayList<EpicTask> getEpicTasks() {
         return epicTasks.values()
                 .stream()
-                .map(EpicTask::copy) // Return copies not avoid changing by link
+                .map(EpicTask::copy)
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
     public ArrayList<SubTask> getSubTasks() {
         return subTasks.values()
                 .stream()
-                .map(SubTask::copy) // Return copies not avoid changing by link
+                .map(SubTask::copy)
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
@@ -55,6 +55,7 @@ public class TaskManager {
 
     public void removeEpicTasks() {
         epicTasks.clear();
+        subTasks.clear();
     }
 
     public void removeSubTasks() {
@@ -132,6 +133,7 @@ public class TaskManager {
                 attributes.getName(),
                 attributes.getDescription()
         ));
+        updateEpicTaskStatus(attributes.getEpicId());
     }
 
     /* Overloaded methods. Updating. */

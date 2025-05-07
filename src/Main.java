@@ -55,6 +55,17 @@ public class Main {
                 TaskStatus.IN_PROGRESS,
                 "Task A should be updated"
         );
+        // Try to update by link
+        taskManager.getTasks().getFirst().setName("Task A [updated by link of collection]");
+        taskManager.getTask(1).setName("Task A [updated by link of model]");
+        assertTaskContent(
+                taskManager.getTask(1),
+                1,
+                "Task A [updated]", // The name should be still the same
+                "Task A desc [updated]",
+                TaskStatus.IN_PROGRESS,
+                "Task A should NOT be updated"
+        );
 
         printHead("Epic Tasks");
 
@@ -141,6 +152,7 @@ public class Main {
 
         printHead("Epic Tasks statuses");
 
+        // Change Subs statuses
         assertTaskStatus(3, TaskStatus.NEW);
         updateStatus(5, TaskStatus.IN_PROGRESS); // Sub New + Sub In-progress = Epic In-Progress
         assertTaskStatus(3, TaskStatus.IN_PROGRESS);
@@ -148,26 +160,37 @@ public class Main {
         assertTaskStatus(3, TaskStatus.IN_PROGRESS); // Sub New + Sub Done = Epic In-Progress
         updateStatus(6, TaskStatus.DONE);
         assertTaskStatus(3, TaskStatus.DONE); // Sub Done + Sub Done = Epic Done
+        // Create new Sub
+        updateStatus(7, TaskStatus.DONE);
+        assertTaskStatus(4, TaskStatus.DONE); // Sub Done = Epic Done
+        taskManager.createTask(new SubTask(0, 4, "Sub B.2", "Sub B.2 desc"));
+        assertTaskStatus(4, TaskStatus.IN_PROGRESS); // Sub Done + Sub New = Epic In Progress
 
         printHead("Removing");
 
         taskManager.removeTask(5);
         assertNull(taskManager.getSubTask(5), "Sub(ID 5) should be removed");
-        assertSizes(2, 2, 2, "1 Sub should be removed");
+        assertSizes(2, 2, 3, "1 Sub should be removed");
         assertTaskStatus(3, TaskStatus.DONE); // Sub Done = Epic Done
         taskManager.removeTask(6);
         assertNull(taskManager.getSubTask(6), "Sub(ID 6) should be remove");
-        assertSizes(2, 2, 1, "1 Sub should be removed");
+        assertSizes(2, 2, 2, "1 Sub should be removed");
         assertTaskStatus(3, TaskStatus.NEW); // No Tasks = Epic New
         taskManager.removeTasks();
-        assertSizes(0, 2, 1, "Regular tasks should be removed");
+        assertSizes(0, 2, 2, "Regular tasks should be removed");
 
         printHead("Cascading Removing");
 
         taskManager.removeTask(4);
-        assertSizes(0, 1, 0, "1 Sub and 1 Epic should be removed");
+        assertSizes(0, 1, 0, "2 Subs and 1 Epic should be removed");
         assertNull(taskManager.getEpicTask(4), "Sub (ID 4) should be removed");
         assertNull(taskManager.getSubTask(7), "Epic (ID 7) should be removed");
+
+        taskManager.createTask(new SubTask(0, 3, "Sub A.3", "Sub A.3 desc"));
+        taskManager.createTask(new SubTask(0, 3, "Sub A.4", "Sub A.4 desc"));
+        assertSizes(0, 1, 2, "2 Subs should be added");
+        taskManager.removeEpicTasks();
+        assertSizes(0, 0, 0, "All Subs should be removed cascading with Epics");
 
         // Result message
         System.out.println("\n--------------------------------------------------");

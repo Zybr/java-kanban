@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37ff85c7-1533-4c8d-9bd8-430e7b853337" name="Changes" comment="Test coverage">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plan/classes.class.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plan/classes.class.puml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/TaskManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/tasks/EpicTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/tasks/SubTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/tasks/Task.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/tasks/TaskStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tests/Assertions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/TaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/TaskManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,5 +192,16 @@
     <MESSAGE value="Implementation" />
     <MESSAGE value="Test coverage" />
     <option name="LAST_COMMIT_MESSAGE" value="Test coverage" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/models/TaskManager.java</url>
+          <line>167</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
