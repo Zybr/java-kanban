@@ -1,5 +1,6 @@
-package models;
+package models.managers;
 
+import models.history.HistoryManager;
 import models.tasks.EpicTask;
 import models.tasks.SubTask;
 import models.tasks.Task;
@@ -9,21 +10,24 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.stream.Collectors;
 
-public class TaskManager {
+public class InMemoryTaskManager implements TaskManager {
     private int lastTaskId;
     private final HashMap<Integer, Task> tasks;
     private final HashMap<Integer, EpicTask> epicTasks;
     private final HashMap<Integer, SubTask> subTasks;
+    private final HistoryManager historyManager;
 
-    public TaskManager() {
+    public InMemoryTaskManager() {
         this.lastTaskId = 0;
         this.tasks = new HashMap<>();
         this.epicTasks = new HashMap<>();
         this.subTasks = new HashMap<>();
+        this.historyManager = Managers.getDefaultHistory();
     }
 
     // List getters >>>
 
+    @Override
     public ArrayList<Task> getTasks() {
         return tasks.values()
                 .stream()
@@ -31,6 +35,7 @@ public class TaskManager {
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
+    @Override
     public ArrayList<EpicTask> getEpicTasks() {
         return epicTasks.values()
                 .stream()
@@ -38,6 +43,7 @@ public class TaskManager {
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
+    @Override
     public ArrayList<SubTask> getSubTasks() {
         return subTasks.values()
                 .stream()
@@ -49,15 +55,18 @@ public class TaskManager {
 
     // List removers >>>
 
+    @Override
     public void removeTasks() {
         tasks.clear();
     }
 
+    @Override
     public void removeEpicTasks() {
         epicTasks.clear();
         subTasks.clear();
     }
 
+    @Override
     public void removeSubTasks() {
         subTasks.clear();
     }
@@ -66,22 +75,32 @@ public class TaskManager {
 
     // One model getters >>>
 
+    @Override
     public Task getTask(int id) {
-        return tasks.containsKey(id) ? tasks.get(id).copy() : null; // Provide a copy to avoid changing by link
+        Task task = tasks.containsKey(id) ? tasks.get(id).copy() : null; // Provide a copy to avoid changing by link
+        historyManager.add(task);
+        return task;
     }
 
+    @Override
     public EpicTask getEpicTask(int id) {
-        return epicTasks.containsKey(id) ? epicTasks.get(id).copy() : null;
+        EpicTask task = epicTasks.containsKey(id) ? epicTasks.get(id).copy() : null;
+        historyManager.add(task);
+        return task;
     }
 
+    @Override
     public SubTask getSubTask(int id) {
-        return subTasks.containsKey(id) ? subTasks.get(id).copy() : null;
+        SubTask task = subTasks.containsKey(id) ? subTasks.get(id).copy() : null;
+        historyManager.add(task);
+        return task;
     }
 
     // <<< One model getters
 
     // Common methods >>>
 
+    @Override
     public void removeTask(int id) {
         if (tasks.remove(id) != null) {
             return;
@@ -90,7 +109,7 @@ public class TaskManager {
         EpicTask epicTask = epicTasks.remove(id);
 
         if (epicTask != null) {
-            getSubTasksOfEpic(epicTask.getId())
+            getEpicSubTasks(epicTask.getId())
                     .forEach(subTask -> subTasks.remove(subTask.getId()));
         }
 
@@ -107,25 +126,32 @@ public class TaskManager {
 
     /* Overloaded methods. Creation. */
 
-    public void createTask(Task attributes) {
+    @Override
+    public Task createTask(Task attributes) {
         int id = makeId();
         tasks.put(id, new Task( // Save a copy to avoid changing by link
                 id,
                 attributes.getName(),
                 attributes.getDescription()
         ));
+
+        return tasks.get(id).copy();
     }
 
-    public void createTask(EpicTask attributes) {
+    @Override
+    public EpicTask createTask(EpicTask attributes) {
         int id = makeId();
         epicTasks.put(id, new EpicTask(
                 id,
                 attributes.getName(),
                 attributes.getDescription()
         ));
+
+        return epicTasks.get(id).copy();
     }
 
-    public void createTask(SubTask attributes) {
+    @Override
+    public SubTask createTask(SubTask attributes) {
         int id = makeId();
         subTasks.put(id, new SubTask(
                 id,
@@ -134,20 +160,25 @@ public class TaskManager {
                 attributes.getDescription()
         ));
         updateEpicTaskStatus(attributes.getEpicId());
+
+        return subTasks.get(id).copy();
     }
 
     /* Overloaded methods. Updating. */
 
+    @Override
     public void updateTask(Task attributes) {
         tasks.get(attributes.getId())
                 .fill(attributes);
     }
 
+    @Override
     public void updateTask(EpicTask attributes) {
         epicTasks.get(attributes.getId())
                 .fill(attributes);
     }
 
+    @Override
     public void updateTask(SubTask attributes) {
         SubTask subTask = subTasks.get(attributes.getId());
         subTask.fill(attributes);
@@ -156,11 +187,17 @@ public class TaskManager {
 
     /* <<< Overloaded methods */
 
-    public ArrayList<SubTask> getSubTasksOfEpic(int epicId) {
+    @Override
+    public ArrayList<SubTask> getEpicSubTasks(int epicId) {
         return getSubTasks()
                 .stream()
                 .filter(subTask -> subTask.getEpicId() == epicId)
                 .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    @Override
+    public ArrayList<Task> getHistory() {
+        return historyManager.getHistory();
     }
 
     private void updateEpicTaskStatus(int epicId) {
@@ -169,7 +206,7 @@ public class TaskManager {
     }
 
     private TaskStatus calculateStatus(int epicId) {
-        ArrayList<SubTask> subTasks = getSubTasksOfEpic(epicId);
+        ArrayList<SubTask> subTasks = getEpicSubTasks(epicId);
         boolean hasTasks = !subTasks.isEmpty();
         boolean hasNew = false;
         boolean hasDone = false;
