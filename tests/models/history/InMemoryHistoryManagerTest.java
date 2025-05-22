@@ -38,13 +38,17 @@ class InMemoryHistoryManagerTest {
         SubTask originalSubTask = subTask.copy();
         manager.add(subTask);
 
-        // Update tasks
+        // Try to change the history tasks updating the original task
         task.setName(task.getName() + " [updated]");
         epicTask.setName(epicTask.getName() + " [updated]");
         subTask.setName(subTask.getName() + " [updated]");
 
-        // Check immutability
+        // Try to change the history tasks by link
         ArrayList<Task> history = manager.getHistory();
+        history.getFirst().setName(history.getFirst() + " [updated]");
+
+        // Check immutability
+        history = manager.getHistory();
         assertEquals(originalTask.getName(), history.get(0).getName());
         assertEquals(originalEpicTask.getName(), history.get(1).getName());
         assertEquals(originalSubTask.getName(), history.get(2).getName());

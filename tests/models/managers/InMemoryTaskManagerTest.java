@@ -71,6 +71,9 @@ class InMemoryTaskManagerTest {
         subB.setStatus(TaskStatus.DONE);
         manager.updateTask(subB);
         assertEquals(TaskStatus.DONE, manager.getEpicTask(epic.getId()).getStatus());
+
+        manager.removeSubTasks();
+        assertEquals(TaskStatus.NEW, manager.getEpicTask(epic.getId()).getStatus());
     }
 
     /**
@@ -167,6 +170,10 @@ class InMemoryTaskManagerTest {
         sourceTask.setName(sourceTask.getName() + " [updated]");
         sourceTask.setStatus(TaskStatus.DONE);
         sourceTask.setDescription(sourceTask.getDescription() + " [updated]");
+
+        // Tyr to change the history by link
+        ArrayList<Task> tasks = manager.getTasks();
+        tasks.getFirst().setName(tasks.getFirst() + " [updated]");
 
         assertEqualsByContent(
                 originalTask,
