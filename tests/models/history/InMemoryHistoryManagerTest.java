@@ -48,7 +48,10 @@ class InMemoryHistoryManagerTest {
     }
 
     /**
-     * "Убедитесь, что задачи, добавляемые в HistoryManager, сохраняют предыдущую версию задачи и её данных."
+     * - "Убедитесь, что задачи, добавляемые в HistoryManager, сохраняют предыдущую версию задачи и её данных."
+     * - "С помощью сеттеров экземпляры задач позволяют изменить любое своё поле,
+     * но это может повлиять на данные внутри менеджера.
+     * Протестируйте эти кейсы и подумайте над возможными вариантами решения проблемы."
      *
      * @see InMemoryHistoryManager#add(Task)
      * @see InMemoryHistoryManager#getHistory()
@@ -124,7 +127,7 @@ class InMemoryHistoryManagerTest {
     private List<Task> fillHistory(InMemoryHistoryManager manager) {
         List<Task> tasks = new ArrayList<>();
 
-        for (int id = 0; id < 3; id++) {
+        for (int id = 0; id <= 2; id++) {
             Task task = new Task(id, "Task " + id, "Task Desc " + id);
             manager.add(task);
             tasks.add(task);
