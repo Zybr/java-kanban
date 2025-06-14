@@ -238,14 +238,14 @@ class InMemoryTaskManagerTest {
         manager.getSubTask(sub2.getId());
         manager.getSubTask(sub1.getId());
         assertEquals(
-                List.of(
-                        epic2.getId(),
-                        epic1.getId(),
-                        task2.getId(),
-                        task1.getId(),
-                        sub2.getId(),
-                        sub1.getId()
-                ),
+                getTaskIds(List.of(
+                        epic2,
+                        epic1,
+                        task2,
+                        task1,
+                        sub2,
+                        sub1
+                )),
                 getTaskIds(manager.getHistory())
         );
 
@@ -255,27 +255,27 @@ class InMemoryTaskManagerTest {
         manager.getTask(task1.getId());
         manager.getSubTask(sub1.getId());
         assertEquals(
-                List.of(
-                        epic2.getId(),
-                        task2.getId(),
-                        sub2.getId(),
-                        epic1.getId(),
-                        task1.getId(),
-                        sub1.getId()
-                ),
+                getTaskIds(List.of(
+                        epic2,
+                        task2,
+                        sub2,
+                        epic1,
+                        task1,
+                        sub1
+                )),
                 getTaskIds(manager.getHistory())
         );
 
         // Remove Regular Task
         manager.removeTask(task1.getId());
         assertEquals(
-                List.of(
-                        epic2.getId(),
-                        task2.getId(),
-                        sub2.getId(),
-                        epic1.getId(),
-                        sub1.getId()
-                ),
+                getTaskIds(List.of(
+                        epic2,
+                        task2,
+                        sub2,
+                        epic1,
+                        sub1
+                )),
                 getTaskIds(manager.getHistory())
         );
 
@@ -283,12 +283,12 @@ class InMemoryTaskManagerTest {
         // Remove Sub Task
         manager.removeTask(sub1.getId());
         assertEquals(
-                List.of(
-                        epic2.getId(),
-                        task2.getId(),
-                        sub2.getId(),
-                        epic1.getId()
-                ),
+                getTaskIds(List.of(
+                        epic2,
+                        task2,
+                        sub2,
+                        epic1
+                )),
                 getTaskIds(manager.getHistory())
         );
 
@@ -296,10 +296,20 @@ class InMemoryTaskManagerTest {
         // Remove Epic with nested Sub
         manager.removeTask(epic2.getId());
         assertEquals(
-                List.of(
-                        task2.getId(),
-                        epic1.getId()
-                ),
+                getTaskIds(List.of(
+                        task2,
+                        epic1
+                )),
+                getTaskIds(manager.getHistory())
+        );
+
+        // Remove all Tasks
+        manager.createTask(new Task(0, "Task 3", ""));
+        manager.createTask(new SubTask(0, epic1.getId(), "Sub Task 3", ""));
+        manager.removeEpicTasks();
+        manager.removeTasks();
+        assertEquals(
+                getTaskIds(List.of()),
                 getTaskIds(manager.getHistory())
         );
     }

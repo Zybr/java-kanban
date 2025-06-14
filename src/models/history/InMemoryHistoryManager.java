@@ -1,20 +1,20 @@
 package models.history;
 
-import models.history.tasks_list.TaskNode;
-import models.history.tasks_list.TaskNodesList;
+import models.history.nodes_list.Node;
+import models.history.nodes_list.NodesList;
 import models.tasks.Task;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class InMemoryHistoryManager implements HistoryManager {
-    private final TaskNodesList nodes = new TaskNodesList();
-    private final Map<Integer, TaskNode> taskNodes = new HashMap<>();
+    private final NodesList<Task> nodes = new NodesList<>();
+    private final Map<Integer, Node<Task>> taskNodes = new HashMap<>();
 
     @Override
     public ArrayList<Task> getHistory() {
         return nodes
-                .getTasks()
+                .getValues()
                 .stream()
                 .map(Task::copy) // Return copies to avoid changing by link
                 .collect(Collectors.toCollection(ArrayList::new));
@@ -26,19 +26,19 @@ public class InMemoryHistoryManager implements HistoryManager {
             return;
         }
 
-        remove(task);
+        remove(task.getId());
         taskNodes.put(
                 task.getId(),
-                this.nodes.addTask(task.copy())
+                this.nodes.push(new Node<>(task.copy()))
         );
     }
 
     @Override
-    public void remove(Task task) {
-        TaskNode node = taskNodes.remove(task.getId());
+    public void remove(int taskId) {
+        Node<Task> node = taskNodes.remove(taskId);
 
         if (node != null) {
-            nodes.removeNode(node);
+            nodes.remove(node);
         }
     }
 }

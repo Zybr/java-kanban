@@ -32,14 +32,14 @@ class InMemoryHistoryManagerTest {
 
     /**
      * @see InMemoryHistoryManager#add(Task)
-     * @see InMemoryHistoryManager#remove(Task)
+     * @see InMemoryHistoryManager#remove(int)
      * @see InMemoryHistoryManager#getHistory()
      */
     @Test
     public void shouldRemoveTask() {
         InMemoryHistoryManager manager = (InMemoryHistoryManager) Managers.getDefaultHistory();
         List<Task> tasks = fillHistory(manager);
-        manager.remove(tasks.get(1));
+        manager.remove(tasks.get(1).getId());
 
         assertEquals(
                 List.of(0, 2),
@@ -50,8 +50,8 @@ class InMemoryHistoryManagerTest {
     /**
      * - "Убедитесь, что задачи, добавляемые в HistoryManager, сохраняют предыдущую версию задачи и её данных."
      * - "С помощью сеттеров экземпляры задач позволяют изменить любое своё поле,
-     * но это может повлиять на данные внутри менеджера.
-     * Протестируйте эти кейсы и подумайте над возможными вариантами решения проблемы."
+     * но это может повлиять на данные внутри менеджера."
+     * - "Протестируйте эти кейсы и подумайте над возможными вариантами решения проблемы."
      *
      * @see InMemoryHistoryManager#add(Task)
      * @see InMemoryHistoryManager#getHistory()

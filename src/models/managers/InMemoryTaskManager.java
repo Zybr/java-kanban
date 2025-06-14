@@ -54,22 +54,21 @@ public class InMemoryTaskManager implements TaskManager {
     // <<< List getters
 
     // List removers >>>
+    // Remove tasks one by one to execute extra logic such as history updating
 
     @Override
     public void removeTasks() {
-        tasks.clear();
+        getTasks().forEach(task -> removeTask(task.getId()));
     }
 
     @Override
     public void removeEpicTasks() {
-        epicTasks.clear();
-        subTasks.clear();
+        getEpicTasks().forEach(epicTask -> removeTask(epicTask.getId()));
     }
 
     @Override
     public void removeSubTasks() {
-        subTasks.clear();
-        getEpicTasks().forEach(epicTask -> updateEpicTaskStatus(epicTask.getId()));
+        getSubTasks().forEach(subTask -> removeTask(subTask.getId()));
     }
 
     // <<< List removers
@@ -106,7 +105,7 @@ public class InMemoryTaskManager implements TaskManager {
         Task regualrTask = tasks.remove(id);
 
         if (regualrTask != null) {
-            historyManager.remove(regualrTask);
+            historyManager.remove(regualrTask.getId());
             return;
         }
 
@@ -116,16 +115,16 @@ public class InMemoryTaskManager implements TaskManager {
             getEpicSubTasks(epicTask.getId())
                     .forEach(subTask -> {
                         subTasks.remove(subTask.getId());
-                        historyManager.remove(subTask);
+                        historyManager.remove(subTask.getId());
                     });
-            historyManager.remove(epicTask);
+            historyManager.remove(epicTask.getId());
         }
 
         SubTask subTask = subTasks.remove(id);
 
         if (subTask != null) {
             updateEpicTaskStatus(subTask.getEpicId());
-            historyManager.remove(subTask);
+            historyManager.remove(subTask.getId());
         }
     }
 
@@ -138,7 +137,8 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public Task createTask(Task attributes) {
         int id = makeId();
-        tasks.put(id, new Task( // Save a copy to avoid changing by link
+        // Save a copy to avoid changing by link
+        tasks.put(id, new Task(
                 id,
                 attributes.getName(),
                 attributes.getDescription()
