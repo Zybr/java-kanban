@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37ff85c7-1533-4c8d-9bd8-430e7b853337" name="Changes" comment="Sprint 5 / History; Managers provider; Test coverage;">
+    <list default="true" id="37ff85c7-1533-4c8d-9bd8-430e7b853337" name="Changes" comment="Sprint 6 / Put idea files under gitignore">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/managers/InMemoryTaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/managers/InMemoryTaskManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/history/HistoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/history/HistoryManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/history/InMemoryHistoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/history/InMemoryHistoryManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/models/history/InMemoryHistoryManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/models/history/InMemoryHistoryManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/models/managers/InMemoryTaskManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/models/managers/InMemoryTaskManagerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +71,10 @@
     &quot;JUnit.EpicTaskTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.EpicTaskTest.shouldNotAddEpicAsSubTask.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.InMemoryHistoryManagerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InMemoryHistoryManagerTest.shouldAddTask.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.InMemoryHistoryManagerTest.shouldNotChangeHistoryByLink.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InMemoryHistoryManagerTest.shouldRemoveTask.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InMemoryHistoryManagerTest.shouldReplaceOldTasks.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.InMemoryTaskManagerTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.InMemoryTaskManagerTest.shouldAddTasks.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.InMemoryTaskManagerTest.shouldEpicStatusDependOnSubs.executor&quot;: &quot;Run&quot;,
@@ -94,7 +97,7 @@
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;sprint__6-solution&quot;,
     &quot;last_directory_selection&quot;: &quot;/home/mike/projects/private/java/hw/java-kanban/tests&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/mike/projects/private/java/hw/java-kanban/plan&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.testRunning&quot;
@@ -146,7 +149,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InMemoryHistoryManagerTest.shouldNotChangeHistoryByLink" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="InMemoryHistoryManagerTest.shouldAddTask" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java-kanban" />
       <extension name="coverage">
         <pattern>
@@ -156,38 +159,39 @@
       </extension>
       <option name="PACKAGE_NAME" value="models.history" />
       <option name="MAIN_CLASS_NAME" value="models.history.InMemoryHistoryManagerTest" />
-      <option name="METHOD_NAME" value="shouldNotChangeHistoryByLink" />
+      <option name="METHOD_NAME" value="shouldAddTask" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InMemoryTaskManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="InMemoryHistoryManagerTest.shouldRemoveTask" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java-kanban" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="models.managers.*" />
+          <option name="PATTERN" value="models.history.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="models.managers" />
-      <option name="MAIN_CLASS_NAME" value="models.managers.InMemoryTaskManagerTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="models.history" />
+      <option name="MAIN_CLASS_NAME" value="models.history.InMemoryHistoryManagerTest" />
+      <option name="METHOD_NAME" value="shouldRemoveTask" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InMemoryTaskManagerTest.shouldNotTaskBeChangeableByLink" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="InMemoryHistoryManagerTest.shouldReplaceOldTasks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java-kanban" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="models.managers.*" />
+          <option name="PATTERN" value="models.history.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="models.managers" />
-      <option name="MAIN_CLASS_NAME" value="models.managers.InMemoryTaskManagerTest" />
-      <option name="METHOD_NAME" value="shouldNotTaskBeChangeableByLink" />
+      <option name="PACKAGE_NAME" value="models.history" />
+      <option name="MAIN_CLASS_NAME" value="models.history.InMemoryHistoryManagerTest" />
+      <option name="METHOD_NAME" value="shouldReplaceOldTasks" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -196,10 +200,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in java-kanban" />
-        <item itemvalue="JUnit.InMemoryTaskManagerTest.shouldNotTaskBeChangeableByLink" />
-        <item itemvalue="JUnit.InMemoryTaskManagerTest" />
-        <item itemvalue="JUnit.InMemoryHistoryManagerTest.shouldNotChangeHistoryByLink" />
         <item itemvalue="JUnit.InMemoryHistoryManagerTest" />
+        <item itemvalue="JUnit.InMemoryHistoryManagerTest.shouldReplaceOldTasks" />
+        <item itemvalue="JUnit.InMemoryHistoryManagerTest.shouldRemoveTask" />
+        <item itemvalue="JUnit.InMemoryHistoryManagerTest.shouldAddTask" />
       </list>
     </recent_temporary>
   </component>
@@ -348,7 +352,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747816589696</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Sprint 6 / Put idea files under gitignore">
+      <option name="closed" value="true" />
+      <created>1749618137079</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1749618137079</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -362,17 +374,7 @@
     <MESSAGE value="Sprint 5 / Additional tests" />
     <MESSAGE value="Sprint 5 /" />
     <MESSAGE value="Sprint 5 / History; Managers provider; Test coverage;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sprint 5 / History; Managers provider; Test coverage;" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/tests/models/history/InMemoryHistoryManagerTest.java</url>
-          <line>51</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Sprint 6 / Put idea files under gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sprint 6 / Put idea files under gitignore" />
   </component>
 </project>

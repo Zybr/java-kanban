@@ -2,16 +2,16 @@ package models.history;
 
 import models.tasks.Task;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class InMemoryHistoryManager implements HistoryManager {
-    private final static int HISTORY_MAX_SIZE = 10;
-    private final ArrayList<Task> tasks = new ArrayList<>();
+    private final Map<Integer, Task> tasks = new LinkedHashMap<>();
 
     @Override
     public ArrayList<Task> getHistory() {
         return tasks
+                .values()
                 .stream()
                 .map(Task::copy) // Return copies to avoid changing by link
                 .collect(Collectors.toCollection(ArrayList::new));
@@ -23,10 +23,12 @@ public class InMemoryHistoryManager implements HistoryManager {
             return;
         }
 
-        this.tasks.add(task.copy());
+        remove(task);
+        this.tasks.put(task.getId(), task.copy());
+    }
 
-        if (this.tasks.size() > HISTORY_MAX_SIZE) {
-            this.tasks.removeFirst();
-        }
+    @Override
+    public void remove(Task task) {
+        tasks.remove(task.getId());
     }
 }

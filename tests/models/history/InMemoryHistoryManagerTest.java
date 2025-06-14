@@ -7,6 +7,7 @@ import models.tasks.Task;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,6 +16,38 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class InMemoryHistoryManagerTest {
     /**
+     * @see InMemoryHistoryManager#add(Task)
+     * @see InMemoryHistoryManager#getHistory()
+     */
+    @Test
+    public void shouldAddTask() {
+        InMemoryHistoryManager manager = (InMemoryHistoryManager) Managers.getDefaultHistory();
+        List<Task> tasks = fillHistory(manager);
+
+        assertEquals(
+                tasks,
+                manager.getHistory()
+        );
+    }
+
+    /**
+     * @see InMemoryHistoryManager#add(Task)
+     * @see InMemoryHistoryManager#remove(Task)
+     * @see InMemoryHistoryManager#getHistory()
+     */
+    @Test
+    public void shouldRemoveTask() {
+        InMemoryHistoryManager manager = (InMemoryHistoryManager) Managers.getDefaultHistory();
+        List<Task> tasks = fillHistory(manager);
+        manager.remove(tasks.get(1));
+
+        assertEquals(
+                List.of(0, 2),
+                getTaskIds(manager.getHistory())
+        );
+    }
+
+    /**
      * "Убедитесь, что задачи, добавляемые в HistoryManager, сохраняют предыдущую версию задачи и её данных."
      *
      * @see InMemoryHistoryManager#add(Task)
@@ -22,7 +55,7 @@ class InMemoryHistoryManagerTest {
      */
     @Test
     public void shouldNotChangeHistoryByLink() {
-        HistoryManager manager = Managers.getDefaultHistory();
+        InMemoryHistoryManager manager = (InMemoryHistoryManager) Managers.getDefaultHistory();
 
         // Make tasks
         // Regular
@@ -52,5 +85,55 @@ class InMemoryHistoryManagerTest {
         assertEquals(originalTask.getName(), history.get(0).getName());
         assertEquals(originalEpicTask.getName(), history.get(1).getName());
         assertEquals(originalSubTask.getName(), history.get(2).getName());
+    }
+
+    /**
+     * Check that added tasks are unique and sorted by time of adding.
+     *
+     * @see InMemoryHistoryManager#add(Task)
+     * @see InMemoryHistoryManager#getHistory()
+     */
+    @Test
+    public void shouldReplaceOldTasks() {
+        InMemoryHistoryManager manager = (InMemoryHistoryManager) Managers.getDefaultHistory();
+        List<Task> tasks = fillHistory(manager);
+        assertEquals(
+                List.of(0, 1, 2),
+                getTaskIds(manager.getHistory())
+        );
+
+        manager.add(tasks.get(0));
+        assertEquals(
+                List.of(1, 2, 0),
+                getTaskIds(manager.getHistory())
+        );
+
+        manager.add(tasks.get(2));
+        assertEquals(
+                List.of(1, 0, 2),
+                getTaskIds(manager.getHistory())
+        );
+
+        manager.add(tasks.get(1));
+        assertEquals(
+                List.of(0, 2, 1),
+                getTaskIds(manager.getHistory())
+        );
+    }
+
+    private List<Task> fillHistory(InMemoryHistoryManager manager) {
+        List<Task> tasks = new ArrayList<>();
+
+        for (int id = 0; id < 3; id++) {
+            Task task = new Task(id, "Task " + id, "Task Desc " + id);
+            manager.add(task);
+            tasks.add(task);
+        }
+
+        return tasks;
+    }
+
+    private List<Integer> getTaskIds(List<Task> tasks) {
+        return tasks.stream().map(Task::getId).toList();
     }
 }
