@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="37ff85c7-1533-4c8d-9bd8-430e7b853337" name="Changes" comment="Sprint 6 / Unique history tasks using custom Double Linked List">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/tasks/SubTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/tasks/SubTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/models/history/InMemoryHistoryManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/models/history/InMemoryHistoryManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/models/history/tasks_list/TaskNodesListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/models/history/tasks_list/TaskNodesListTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/managers/InMemoryTaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/managers/InMemoryTaskManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/models/managers/InMemoryTaskManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/models/managers/InMemoryTaskManagerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +77,7 @@
     "JUnit.InMemoryTaskManagerTest.executor": "Run",
     "JUnit.InMemoryTaskManagerTest.shouldAddTasks.executor": "Run",
     "JUnit.InMemoryTaskManagerTest.shouldEpicStatusDependOnSubs.executor": "Run",
+    "JUnit.InMemoryTaskManagerTest.shouldMakeHistory.executor": "Run",
     "JUnit.InMemoryTaskManagerTest.shouldManageRegularTasks.executor": "Run",
     "JUnit.InMemoryTaskManagerTest.shouldNotBeChangeableByLink.executor": "Run",
     "JUnit.InMemoryTaskManagerTest.shouldNotChangeHistoryByLink.executor": "Run",
@@ -132,7 +132,7 @@
       <recent name="tests" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in java-kanban">
+  <component name="RunManager" selected="JUnit.InMemoryTaskManagerTest.shouldMakeHistory">
     <configuration name="All in java-kanban" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java-kanban" />
       <option name="PACKAGE_NAME" value="" />
@@ -141,33 +141,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InMemoryHistoryManagerTest.shouldReplaceOldTasks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="InMemoryTaskManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java-kanban" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="models.history.*" />
+          <option name="PATTERN" value="models.managers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="models.history" />
-      <option name="MAIN_CLASS_NAME" value="models.history.InMemoryHistoryManagerTest" />
-      <option name="METHOD_NAME" value="shouldReplaceOldTasks" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="models.managers" />
+      <option name="MAIN_CLASS_NAME" value="models.managers.InMemoryTaskManagerTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TaskNodesListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="InMemoryTaskManagerTest.shouldMakeHistory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java-kanban" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="models.history.tasks_list.*" />
+          <option name="PATTERN" value="models.managers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="models.history.task_list" />
-      <option name="MAIN_CLASS_NAME" value="models.history.tasks_list.TaskNodesListTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="models.managers" />
+      <option name="MAIN_CLASS_NAME" value="models.managers.InMemoryTaskManagerTest" />
+      <option name="METHOD_NAME" value="shouldMakeHistory" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -206,11 +206,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.InMemoryTaskManagerTest.shouldMakeHistory" />
+        <item itemvalue="JUnit.InMemoryTaskManagerTest" />
         <item itemvalue="JUnit.All in java-kanban" />
         <item itemvalue="JUnit.TaskNodesListTest.shouldRemoveNode" />
         <item itemvalue="JUnit.TaskNodesListTest.shouldAddTask" />
-        <item itemvalue="JUnit.InMemoryHistoryManagerTest.shouldReplaceOldTasks" />
-        <item itemvalue="JUnit.TaskNodesListTest" />
       </list>
     </recent_temporary>
   </component>
@@ -399,7 +399,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749901117922</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Sprint 6 / Unique history tasks using custom Double Linked List">
+      <option name="closed" value="true" />
+      <created>1749901513784</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1749901513784</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
