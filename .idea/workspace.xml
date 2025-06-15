@@ -4,23 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37ff85c7-1533-4c8d-9bd8-430e7b853337" name="Changes" comment="Sprint 6 /">
-      <change afterPath="$PROJECT_DIR$/src/models/history/nodes_list/Node.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/history/nodes_list/NodesList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/history/nodes_list/NodesListTest.java" afterDir="false" />
+    <list default="true" id="37ff85c7-1533-4c8d-9bd8-430e7b853337" name="Changes" comment="Sprint 6 / Code grooming">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-kanban.iml" beforeDir="false" afterPath="$PROJECT_DIR$/java-kanban.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/history/HistoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/history/HistoryManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/history/InMemoryHistoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/history/InMemoryHistoryManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/history/tasks_list/TaskNode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/history/tasks_list/TaskNodesList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/managers/InMemoryTaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/managers/InMemoryTaskManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/models/history/InMemoryHistoryManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/models/history/InMemoryHistoryManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/models/history/tasks_list/TaskNodesListTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/models/managers/InMemoryTaskManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/models/managers/InMemoryTaskManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/models/managers/ManagersTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/models/managers/ManagersTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/models/tasks/EpicTaskTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/models/tasks/EpicTaskTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/models/tasks/TaskTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/models/tasks/TaskTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/history/nodes_list/Node.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/history/nodes_list/NodesList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/history/nodes_list/NodesListTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -243,7 +232,6 @@
         <item itemvalue="JUnit.All in java-kanban" />
         <item itemvalue="JUnit.InMemoryTaskManagerTest.shouldMakeHistory" />
         <item itemvalue="JUnit.InMemoryTaskManagerTest" />
-        <item itemvalue="JUnit.TaskNodesListTest.shouldRemoveNode" />
         <item itemvalue="JUnit.NodesListTest.shouldPushTask" />
       </list>
     </recent_temporary>
@@ -489,7 +477,23 @@
       <option name="project" value="LOCAL" />
       <updated>1749916018717</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Sprint 6 / Code grooming">
+      <option name="closed" value="true" />
+      <created>1749917299695</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1749917299695</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Sprint 6 / Code grooming">
+      <option name="closed" value="true" />
+      <created>1749917374979</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1749917374979</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -550,6 +554,7 @@
     <MESSAGE value="Sprint 6 / Code style fix" />
     <MESSAGE value="Sprint 6 / CI fixes" />
     <MESSAGE value="Sprint 6 /" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sprint 6 /" />
+    <MESSAGE value="Sprint 6 / Code grooming" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sprint 6 / Code grooming" />
   </component>
 </project>
