@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -216,6 +217,103 @@ class InMemoryTaskManagerTest {
         );
     }
 
+    @Test
+    public void shouldMakeHistory() {
+        assertEquals(List.of(), manager.getHistory());
+
+        Task task1 = manager.createTask(new Task(0, "Task 1", ""));
+        Task task2 = manager.createTask(new Task(0, "Task 2", ""));
+        // Epic 1 -> Sub 1
+        EpicTask epic1 = manager.createTask(new EpicTask(0, "EpicTask 1", ""));
+        SubTask sub1 = manager.createTask(new SubTask(0, epic1.getId(), "SubTask 1", ""));
+        // Epic 2 -> Sub 2
+        EpicTask epic2 = manager.createTask(new EpicTask(0, "EpicTask 2", ""));
+        SubTask sub2 = manager.createTask(new SubTask(0, epic2.getId(), "SubTask 2", ""));
+
+        // Build history
+        manager.getEpicTask(epic2.getId());
+        manager.getEpicTask(epic1.getId());
+        manager.getTask(task2.getId());
+        manager.getTask(task1.getId());
+        manager.getSubTask(sub2.getId());
+        manager.getSubTask(sub1.getId());
+        assertEquals(
+                getTaskIds(List.of(
+                        epic2,
+                        epic1,
+                        task2,
+                        task1,
+                        sub2,
+                        sub1
+                )),
+                getTaskIds(manager.getHistory())
+        );
+
+        // Change history order
+        // "После каждого запроса выведите историю и убедитесь, что в ней нет повторов."
+        manager.getEpicTask(epic1.getId());
+        manager.getTask(task1.getId());
+        manager.getSubTask(sub1.getId());
+        assertEquals(
+                getTaskIds(List.of(
+                        epic2,
+                        task2,
+                        sub2,
+                        epic1,
+                        task1,
+                        sub1
+                )),
+                getTaskIds(manager.getHistory())
+        );
+
+        // Remove Regular Task
+        manager.removeTask(task1.getId());
+        assertEquals(
+                getTaskIds(List.of(
+                        epic2,
+                        task2,
+                        sub2,
+                        epic1,
+                        sub1
+                )),
+                getTaskIds(manager.getHistory())
+        );
+
+        // "Удалите задачу, которая есть в истории, и проверьте, что при печати она не будет выводиться."
+        // Remove Sub Task
+        manager.removeTask(sub1.getId());
+        assertEquals(
+                getTaskIds(List.of(
+                        epic2,
+                        task2,
+                        sub2,
+                        epic1
+                )),
+                getTaskIds(manager.getHistory())
+        );
+
+        // "Удалите эпик с тремя подзадачами и убедитесь, что из истории удалился как сам эпик, так и все его подзадачи."
+        // Remove Epic with nested Sub
+        manager.removeTask(epic2.getId());
+        assertEquals(
+                getTaskIds(List.of(
+                        task2,
+                        epic1
+                )),
+                getTaskIds(manager.getHistory())
+        );
+
+        // Remove all Tasks
+        manager.createTask(new Task(0, "Task 3", ""));
+        manager.createTask(new SubTask(0, epic1.getId(), "Sub Task 3", ""));
+        manager.removeEpicTasks();
+        manager.removeTasks();
+        assertEquals(
+                getTaskIds(List.of()),
+                getTaskIds(manager.getHistory())
+        );
+    }
+
     // <<< Changing by link
 
     private void assertTaskContent(Task task, int id, String name) {
@@ -227,5 +325,9 @@ class InMemoryTaskManagerTest {
         assertEquals(taskA.getName(), taskB.getName());
         assertEquals(taskA.getStatus(), taskB.getStatus());
         assertEquals(taskA.getDescription(), taskB.getDescription());
+    }
+
+    private List<Integer> getTaskIds(List<Task> tasks) {
+        return tasks.stream().map(Task::getId).toList();
     }
 }
