@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37ff85c7-1533-4c8d-9bd8-430e7b853337" name="Changes" comment="Sprint 6 / Code grooming">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/history/InMemoryHistoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/history/InMemoryHistoryManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/history/nodes_list/Node.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/history/nodes_list/NodesList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/models/history/nodes_list/NodesListTest.java" beforeDir="false" />
+    <list default="true" id="37ff85c7-1533-4c8d-9bd8-430e7b853337" name="Changes" comment="Sprint 7 / File backed Task Manager">
+      <change beforePath="$PROJECT_DIR$/src/models/managers/filebacked/FileBackedTaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/managers/filebacked/FileBackedTaskManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,7 +14,6 @@
   </component>
   <component name="ChangesViewManager">
     <option name="groupingKeys">
-      <option value="directory" />
       <option value="module" />
       <option value="repository" />
     </option>
@@ -28,9 +23,9 @@
       <list>
         <option value="UML Sequence" />
         <option value="UML Class" />
-        <option value="Enum" />
         <option value="Interface" />
         <option value="JUnit5 Test Class" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -83,57 +78,61 @@
     <option name="autoscrollToSource" value="true" />
     <option name="openDirectoriesWithSingleClick" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TaskTest.executor&quot;: &quot;Run&quot;,
-    &quot;DefaultPlantUmlFileTemplate&quot;: &quot;UML Class&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
-    &quot;JUnit.All in java-kanban.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.EpicTaskTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.EpicTaskTest.shouldNotAddEpicAsSubTask.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.InMemoryHistoryManagerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.InMemoryHistoryManagerTest.shouldAddTask.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.InMemoryHistoryManagerTest.shouldNotChangeHistoryByLink.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.InMemoryHistoryManagerTest.shouldRemoveTask.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.InMemoryHistoryManagerTest.shouldReplaceOldTasks.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.InMemoryTaskManagerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.InMemoryTaskManagerTest.shouldAddTasks.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.InMemoryTaskManagerTest.shouldEpicStatusDependOnSubs.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.InMemoryTaskManagerTest.shouldMakeHistory.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.InMemoryTaskManagerTest.shouldManageRegularTasks.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.InMemoryTaskManagerTest.shouldNotBeChangeableByLink.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.InMemoryTaskManagerTest.shouldNotChangeHistoryByLink.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.InMemoryTaskManagerTest.shouldNotConflictByIds.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.InMemoryTaskManagerTest.shouldNotEpicBeChangeableByLink.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.InMemoryTaskManagerTest.shouldNotSubBeChangeableByLink.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.InMemoryTaskManagerTest.shouldNotTaskBeChangeableByLink.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.InMemoryTaskManagerTest.shouldRemoveCascadingRemove.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ManagersTest.shouldGetDefaultManger.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TaskNodesListTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TaskNodesListTest.shouldAddTask.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TaskNodesListTest.shouldRemoveNode.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TaskTest (1).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TaskTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TaskTest.shouldCompareById.executor&quot;: &quot;Run&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;#4 on sprint__6-solution&quot;,
-    &quot;last_directory_selection&quot;: &quot;/home/mike/projects/private/java/hw/java-kanban/tests&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/mike/projects/private/java/hw/java-kanban/plan&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.testRunning&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.TaskTest.executor": "Run",
+    "DefaultPlantUmlFileTemplate": "UML Class",
+    "Downloaded.Files.Path.Enabled": "true",
+    "JUnit.All in java-kanban.executor": "Run",
+    "JUnit.EpicTaskTest.executor": "Run",
+    "JUnit.EpicTaskTest.shouldNotAddEpicAsSubTask.executor": "Run",
+    "JUnit.FileBackedTaskManagerTest.executor": "Debug",
+    "JUnit.FileBackedTaskManagerTest.shouldGetFullFileName.executor": "Run",
+    "JUnit.FileBackedTaskManagerTest.shouldSaveAndLoadTasks.executor": "Run",
+    "JUnit.InMemoryHistoryManagerTest.executor": "Run",
+    "JUnit.InMemoryHistoryManagerTest.shouldAddTask.executor": "Run",
+    "JUnit.InMemoryHistoryManagerTest.shouldNotChangeHistoryByLink.executor": "Run",
+    "JUnit.InMemoryHistoryManagerTest.shouldRemoveTask.executor": "Run",
+    "JUnit.InMemoryHistoryManagerTest.shouldReplaceOldTasks.executor": "Run",
+    "JUnit.InMemoryTaskManagerTest.executor": "Run",
+    "JUnit.InMemoryTaskManagerTest.shouldAddTasks.executor": "Run",
+    "JUnit.InMemoryTaskManagerTest.shouldEpicStatusDependOnSubs.executor": "Run",
+    "JUnit.InMemoryTaskManagerTest.shouldMakeHistory.executor": "Run",
+    "JUnit.InMemoryTaskManagerTest.shouldManageRegularTasks.executor": "Run",
+    "JUnit.InMemoryTaskManagerTest.shouldNotBeChangeableByLink.executor": "Run",
+    "JUnit.InMemoryTaskManagerTest.shouldNotChangeHistoryByLink.executor": "Run",
+    "JUnit.InMemoryTaskManagerTest.shouldNotConflictByIds.executor": "Run",
+    "JUnit.InMemoryTaskManagerTest.shouldNotEpicBeChangeableByLink.executor": "Run",
+    "JUnit.InMemoryTaskManagerTest.shouldNotSubBeChangeableByLink.executor": "Run",
+    "JUnit.InMemoryTaskManagerTest.shouldNotTaskBeChangeableByLink.executor": "Run",
+    "JUnit.InMemoryTaskManagerTest.shouldRemoveCascadingRemove.executor": "Run",
+    "JUnit.ManagersTest.shouldGetDefaultManger.executor": "Run",
+    "JUnit.TaskNodesListTest.executor": "Run",
+    "JUnit.TaskNodesListTest.shouldAddTask.executor": "Run",
+    "JUnit.TaskNodesListTest.shouldRemoveNode.executor": "Run",
+    "JUnit.TaskTest (1).executor": "Run",
+    "JUnit.TaskTest.executor": "Run",
+    "JUnit.TaskTest.shouldCompareById.executor": "Run",
+    "JUnit.models in java-kanban.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "create.test.in.the.same.root": "true",
+    "git-widget-placeholder": "sprint__7-solution-in-file-manager",
+    "last_directory_selection": "/home/mike/projects/private/java/hw/java-kanban/tests",
+    "last_opened_file_path": "/home/mike/projects/private/java/hw/java-kanban/plan",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.testRunning"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;TEXT&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "TEXT"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -145,6 +144,7 @@
       <recent name="models" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="models.managers.inmemory" />
       <recent name="models.history" />
       <recent name="models.history.in_memory_manager" />
     </key>
@@ -154,8 +154,11 @@
       <recent name="models.tasks" />
       <recent name="tests" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="models.managers.filebacked.exceptions" />
+    </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in java-kanban">
+  <component name="RunManager" selected="JUnit.models in java-kanban">
     <configuration name="All in java-kanban" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java-kanban" />
       <option name="PACKAGE_NAME" value="" />
@@ -164,75 +167,74 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InMemoryTaskManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FileBackedTaskManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java-kanban" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="models.managers.*" />
+          <option name="PATTERN" value="models.managers.filebacked.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="models.managers" />
-      <option name="MAIN_CLASS_NAME" value="models.managers.InMemoryTaskManagerTest" />
+      <option name="PACKAGE_NAME" value="models.managers.filebacked" />
+      <option name="MAIN_CLASS_NAME" value="models.managers.filebacked.FileBackedTaskManagerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InMemoryTaskManagerTest.shouldMakeHistory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FileBackedTaskManagerTest.shouldGetFullFileName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java-kanban" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="models.managers.*" />
+          <option name="PATTERN" value="models.managers.filebacked.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="models.managers" />
-      <option name="MAIN_CLASS_NAME" value="models.managers.InMemoryTaskManagerTest" />
-      <option name="METHOD_NAME" value="shouldMakeHistory" />
+      <option name="PACKAGE_NAME" value="models.managers.filebacked" />
+      <option name="MAIN_CLASS_NAME" value="models.managers.filebacked.FileBackedTaskManagerTest" />
+      <option name="METHOD_NAME" value="shouldGetFullFileName" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NodesListTest.shouldPushTask" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FileBackedTaskManagerTest.shouldSaveAndLoadTasks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java-kanban" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="models.history.nodes_list.*" />
+          <option name="PATTERN" value="models.managers.filebacked.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="models.history.nodes_list" />
-      <option name="MAIN_CLASS_NAME" value="models.history.nodes_list.NodesListTest" />
-      <option name="METHOD_NAME" value="shouldPushTask" />
+      <option name="PACKAGE_NAME" value="models.managers.filebacked" />
+      <option name="MAIN_CLASS_NAME" value="models.managers.filebacked.FileBackedTaskManagerTest" />
+      <option name="METHOD_NAME" value="shouldSaveAndLoadTasks" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NodesListTest.shouldRemoveNode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="models in java-kanban" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java-kanban" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="models.history.nodes_list.*" />
+          <option name="PATTERN" value="models.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="models.history.tasks_list" />
-      <option name="MAIN_CLASS_NAME" value="models.history.nodes_list.NodesListTest" />
-      <option name="METHOD_NAME" value="shouldRemoveNode" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="models" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.models in java-kanban" />
+        <item itemvalue="JUnit.FileBackedTaskManagerTest.shouldGetFullFileName" />
+        <item itemvalue="JUnit.FileBackedTaskManagerTest.shouldSaveAndLoadTasks" />
+        <item itemvalue="JUnit.FileBackedTaskManagerTest" />
         <item itemvalue="JUnit.All in java-kanban" />
-        <item itemvalue="JUnit.InMemoryTaskManagerTest.shouldMakeHistory" />
-        <item itemvalue="JUnit.InMemoryTaskManagerTest" />
-        <item itemvalue="JUnit.NodesListTest.shouldPushTask" />
       </list>
     </recent_temporary>
   </component>
@@ -493,7 +495,103 @@
       <option name="project" value="LOCAL" />
       <updated>1749917374979</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Sprint 7 /">
+      <option name="closed" value="true" />
+      <created>1750575423308</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1750575423308</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Sprint 7 /">
+      <option name="closed" value="true" />
+      <created>1750577186300</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1750577186300</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Sprint 7 /">
+      <option name="closed" value="true" />
+      <created>1750742464844</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1750742464844</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Sprint 7 /">
+      <option name="closed" value="true" />
+      <created>1750743313054</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1750743313054</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Sprint 7 /">
+      <option name="closed" value="true" />
+      <created>1750774303774</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1750774303774</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Sprint 7 /">
+      <option name="closed" value="true" />
+      <created>1750775104066</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1750775104066</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Sprint 7 /">
+      <option name="closed" value="true" />
+      <created>1750778659668</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1750778659668</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Sprint 7 /">
+      <option name="closed" value="true" />
+      <created>1750778685390</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1750778685390</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Sprint 7 /">
+      <option name="closed" value="true" />
+      <created>1750779173090</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1750779173090</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Sprint 7 / File backed Task Manager">
+      <option name="closed" value="true" />
+      <created>1750779728903</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1750779728903</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Sprint 7 / File backed Task Manager">
+      <option name="closed" value="true" />
+      <created>1750781189871</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1750781189871</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Sprint 7 / File backed Task Manager">
+      <option name="closed" value="true" />
+      <created>1750781527800</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1750781527800</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -555,6 +653,8 @@
     <MESSAGE value="Sprint 6 / CI fixes" />
     <MESSAGE value="Sprint 6 /" />
     <MESSAGE value="Sprint 6 / Code grooming" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sprint 6 / Code grooming" />
+    <MESSAGE value="Sprint 7 /" />
+    <MESSAGE value="Sprint 7 / File backed Task Manager" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sprint 7 / File backed Task Manager" />
   </component>
 </project>
