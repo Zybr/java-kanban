@@ -153,7 +153,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
     }
 
     private static Task deserializeTask(String serializedTask) {
-        String[] attributes = serializedTask.split(csvColumnSeparator, 6);
+        String[] attributes = serializedTask.trim().split(csvColumnSeparator, 6);
 
         int id = Integer.parseInt(attributes[0]);
         TaskType type = TaskType.valueOf(attributes[1]);
