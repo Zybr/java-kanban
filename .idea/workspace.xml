@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37ff85c7-1533-4c8d-9bd8-430e7b853337" name="Changes" comment="Sprint 7 / File backed Task Manager">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/managers/Managers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/managers/Managers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/managers/filebacked/FileBackedTaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/managers/filebacked/FileBackedTaskManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -87,7 +89,7 @@
     "JUnit.All in java-kanban.executor": "Run",
     "JUnit.EpicTaskTest.executor": "Run",
     "JUnit.EpicTaskTest.shouldNotAddEpicAsSubTask.executor": "Run",
-    "JUnit.FileBackedTaskManagerTest.executor": "Debug",
+    "JUnit.FileBackedTaskManagerTest.executor": "Run",
     "JUnit.FileBackedTaskManagerTest.shouldGetFullFileName.executor": "Run",
     "JUnit.FileBackedTaskManagerTest.shouldSaveAndLoadTasks.executor": "Run",
     "JUnit.InMemoryHistoryManagerTest.executor": "Run",
@@ -122,7 +124,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "create.test.in.the.same.root": "true",
-    "git-widget-placeholder": "sprint__7-solution-in-file-manager",
+    "git-widget-placeholder": "#5 on sprint__7-solution-in-file-manager",
     "last_directory_selection": "/home/mike/projects/private/java/hw/java-kanban/tests",
     "last_opened_file_path": "/home/mike/projects/private/java/hw/java-kanban/plan",
     "settings.editor.selected.configurable": "reference.settings.project.maven.testRunning"
@@ -158,7 +160,7 @@
       <recent name="models.managers.filebacked.exceptions" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.models in java-kanban">
+  <component name="RunManager" selected="JUnit.FileBackedTaskManagerTest">
     <configuration name="All in java-kanban" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java-kanban" />
       <option name="PACKAGE_NAME" value="" />
@@ -230,10 +232,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FileBackedTaskManagerTest" />
+        <item itemvalue="JUnit.FileBackedTaskManagerTest.shouldSaveAndLoadTasks" />
         <item itemvalue="JUnit.models in java-kanban" />
         <item itemvalue="JUnit.FileBackedTaskManagerTest.shouldGetFullFileName" />
-        <item itemvalue="JUnit.FileBackedTaskManagerTest.shouldSaveAndLoadTasks" />
-        <item itemvalue="JUnit.FileBackedTaskManagerTest" />
         <item itemvalue="JUnit.All in java-kanban" />
       </list>
     </recent_temporary>

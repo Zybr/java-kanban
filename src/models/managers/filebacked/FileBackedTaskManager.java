@@ -1,12 +1,12 @@
 package models.managers.filebacked;
 
-import models.managers.inmemory.InMemoryTaskManager;
-import models.managers.TaskManager;
 import models.managers.filebacked.exceptions.ManagerLoadException;
 import models.managers.filebacked.exceptions.ManagerSaveException;
+import models.managers.inmemory.InMemoryTaskManager;
 import models.tasks.*;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -16,56 +16,55 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 
-public class FileBackedTaskManager extends InMemoryTaskManager implements TaskManager {
-    private final Charset fileEncoding = StandardCharsets.UTF_8;
-    private final String csvColumnSeparator = ",";
+public class FileBackedTaskManager extends InMemoryTaskManager {
+    private static final Charset fileEncoding = StandardCharsets.UTF_8;
+    private static final String csvColumnSeparator = ",";
     private final String fullFileName;
 
-    public FileBackedTaskManager(String fullFileName) throws ManagerLoadException {
+    public FileBackedTaskManager(String fullFileName) {
         this.fullFileName = fullFileName;
-        load();
     }
 
-    public Task createTask(Task attributes) throws ManagerSaveException {
+    public Task createTask(Task attributes) {
         Task task = super.createTask(attributes);
         save();
         return task;
     }
 
     @Override
-    public EpicTask createTask(EpicTask attributes) throws ManagerSaveException {
+    public EpicTask createTask(EpicTask attributes) {
         EpicTask subTask = super.createTask(attributes);
         save();
         return subTask;
     }
 
     @Override
-    public SubTask createTask(SubTask attributes) throws ManagerSaveException {
+    public SubTask createTask(SubTask attributes) {
         SubTask subTask = super.createTask(attributes);
         save();
         return subTask;
     }
 
     @Override
-    public void updateTask(Task attributes) throws ManagerSaveException {
+    public void updateTask(Task attributes) {
         super.updateTask(attributes);
         save();
     }
 
     @Override
-    public void updateTask(EpicTask attributes) throws ManagerSaveException {
+    public void updateTask(EpicTask attributes) {
         super.updateTask(attributes);
         save();
     }
 
     @Override
-    public void updateTask(SubTask attributes) throws ManagerSaveException {
+    public void updateTask(SubTask attributes) {
         super.updateTask(attributes);
         save();
     }
 
     @Override
-    public void removeTask(int id) throws ManagerSaveException {
+    public void removeTask(int id) {
         super.removeTask(id);
         save();
     }
@@ -74,7 +73,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager implements TaskMa
         return fullFileName;
     }
 
-    private void save() throws ManagerSaveException {
+    private void save() {
         try (
                 BufferedWriter bufferedWriter = new BufferedWriter(
                         new FileWriter(
@@ -99,11 +98,13 @@ public class FileBackedTaskManager extends InMemoryTaskManager implements TaskMa
         }
     }
 
-    private void load() throws ManagerLoadException {
-        Path filePath = Paths.get(fullFileName);
+    public static FileBackedTaskManager loadFromFile(File file) {
+        Path filePath = Paths.get(file.getPath());
+
+        FileBackedTaskManager manager = new FileBackedTaskManager(file.getPath());
 
         if (Files.notExists(filePath)) {
-            return;
+            return manager;
         }
 
         try {
@@ -111,14 +112,16 @@ public class FileBackedTaskManager extends InMemoryTaskManager implements TaskMa
             for (String line : Files.readString(filePath, fileEncoding).split(csvRowSeparator)) {
                 Task task = deserializeTask(line);
                 switch (getTaskType(task)) {
-                    case TaskType.REGULAR -> createTask(task);
-                    case TaskType.SUB -> createTask((SubTask) task);
-                    case TaskType.EPIC -> createTask((EpicTask) task);
+                    case TaskType.REGULAR -> manager.createTask(task);
+                    case TaskType.SUB -> manager.createTask((SubTask) task);
+                    case TaskType.EPIC -> manager.createTask((EpicTask) task);
                 }
             }
         } catch (Exception e) {
-            throw new ManagerLoadException();
+            throw new ManagerLoadException(e.getMessage());
         }
+
+        return manager;
     }
 
     private void writeTask(BufferedWriter writer, Task task) throws IOException {
@@ -149,7 +152,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager implements TaskMa
                 });
     }
 
-    private Task deserializeTask(String serializedTask) throws ManagerSaveException {
+    private static Task deserializeTask(String serializedTask) {
         String[] attributes = serializedTask.split(csvColumnSeparator, 6);
 
         int id = Integer.parseInt(attributes[0]);
@@ -170,7 +173,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager implements TaskMa
         return task;
     }
 
-    private TaskType getTaskType(Task task) {
+    private static TaskType getTaskType(Task task) {
         return switch (task) {
             case EpicTask epicTask -> TaskType.EPIC;
             case SubTask subTask -> TaskType.SUB;
