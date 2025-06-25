@@ -1,6 +1,8 @@
-package models.managers;
+package models.managers.inmemory;
 
 import models.history.HistoryManager;
+import models.managers.Managers;
+import models.managers.TaskManager;
 import models.tasks.EpicTask;
 import models.tasks.SubTask;
 import models.tasks.Task;
@@ -126,6 +128,15 @@ public class InMemoryTaskManager implements TaskManager {
             updateEpicTaskStatus(subTask.getEpicId());
             historyManager.remove(subTask.getId());
         }
+    }
+
+    public void removeAllTasks() {
+        removeTasks();
+        removeEpicTasks();
+    }
+
+    public boolean isEmpty() {
+        return this.getTasks().isEmpty() && this.getEpicTasks().isEmpty();
     }
 
     // <<< Common methods

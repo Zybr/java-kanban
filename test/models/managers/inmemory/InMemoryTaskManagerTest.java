@@ -1,5 +1,6 @@
-package models.managers;
+package models.managers.inmemory;
 
+import models.managers.Managers;
 import models.tasks.EpicTask;
 import models.tasks.SubTask;
 import models.tasks.Task;
@@ -15,8 +16,8 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * @see InMemoryTaskManager
  */
-class InMemoryTaskManagerTest {
-    private InMemoryTaskManager manager;
+public class InMemoryTaskManagerTest {
+    protected InMemoryTaskManager manager;
 
     @BeforeEach
     public void initManager() {
@@ -157,11 +158,14 @@ class InMemoryTaskManagerTest {
         assertTaskContent(subTasks.get(1), 6, "Sub B");
     }
 
-    /**
-     * "Создайте тест, в котором проверяется неизменность задачи (по всем полям) при добавлении задачи в менеджер"
-     */
 
     // Changing by link >>>
+
+    /**
+     * "Создайте тест, в котором проверяется неизменность задачи (по всем полям) при добавлении задачи в менеджере"
+     *
+     * @see InMemoryTaskManager#getTasks()
+     */
     @Test
     public void shouldNotTaskBeChangeableByLink() {
         Task sourceTask = new Task(0, "Name", "Description");
@@ -182,6 +186,9 @@ class InMemoryTaskManagerTest {
         );
     }
 
+    /**
+     * @see InMemoryTaskManager#createTask(EpicTask)
+     */
     @Test
     public void shouldNotEpicBeChangeableByLink() {
         EpicTask sourceTask = new EpicTask(0, "Name", "Description");
@@ -198,6 +205,9 @@ class InMemoryTaskManagerTest {
         );
     }
 
+    /**
+     * @see InMemoryTaskManager#createTask(SubTask)
+     */
     @Test
     public void shouldNotSubBeChangeableByLink() {
         manager.createTask(new EpicTask(0, "Epic", "Epic description"));
@@ -215,6 +225,45 @@ class InMemoryTaskManagerTest {
                 originalTask,
                 manager.getSubTasks().getFirst()
         );
+    }
+
+    /**
+     * @see InMemoryTaskManager#isEmpty()
+     */
+    @Test
+    public void shouldCheckIfThereAreTasks() {
+        assertTrue(manager.isEmpty());
+
+        manager.createTask(new Task(0, "Task", ""));
+        assertFalse(manager.isEmpty());
+        manager.removeTasks();
+        assertTrue(manager.isEmpty());
+
+        manager.createTask(new EpicTask(0, "Epic", ""));
+        assertFalse(manager.isEmpty());
+        manager.removeEpicTasks();
+        assertTrue(manager.isEmpty());
+
+        EpicTask epicTask = manager.createTask(new EpicTask(0, "Epic", ""));
+        manager.createTask(new SubTask(0, epicTask.getId(), "Sub", ""));
+        assertFalse(manager.isEmpty());
+        manager.removeEpicTasks();
+        assertTrue(manager.isEmpty());
+    }
+
+    /**
+     * @see InMemoryTaskManager#isEmpty()
+     * @see InMemoryTaskManager#removeAllTasks()
+     */
+    @Test
+    public void shouldRemoveAllTask() {
+        manager.createTask(new Task(0, "Task", ""));
+        EpicTask epicTask = manager.createTask(new EpicTask(0, "Epic", ""));
+        manager.createTask(new SubTask(0, epicTask.getId(), "Sub", ""));
+        assertFalse(manager.isEmpty());
+
+        manager.removeAllTasks();
+        assertTrue(manager.isEmpty());
     }
 
     @Test
@@ -316,18 +365,18 @@ class InMemoryTaskManagerTest {
 
     // <<< Changing by link
 
-    private void assertTaskContent(Task task, int id, String name) {
+    protected void assertTaskContent(Task task, int id, String name) {
         assertEquals(id, task.getId());
         assertEquals(name, task.getName());
     }
 
-    private void assertEqualsByContent(Task taskA, Task taskB) {
+    protected void assertEqualsByContent(Task taskA, Task taskB) {
         assertEquals(taskA.getName(), taskB.getName());
         assertEquals(taskA.getStatus(), taskB.getStatus());
         assertEquals(taskA.getDescription(), taskB.getDescription());
     }
 
-    private List<Integer> getTaskIds(List<Task> tasks) {
+    protected List<Integer> getTaskIds(List<Task> tasks) {
         return tasks.stream().map(Task::getId).toList();
     }
 }
