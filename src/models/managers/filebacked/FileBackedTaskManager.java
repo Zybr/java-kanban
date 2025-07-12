@@ -14,6 +14,10 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.Arrays;
 
 
 public class FileBackedTaskManager extends InMemoryTaskManager {
@@ -109,14 +113,19 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
 
         try {
             String csvRowSeparator = "\n";
-            for (String line : Files.readString(filePath, fileEncoding).split(csvRowSeparator)) {
-                Task task = deserializeTask(line);
-                switch (getTaskType(task)) {
-                    case TaskType.REGULAR -> manager.createTask(task);
-                    case TaskType.SUB -> manager.createTask((SubTask) task);
-                    case TaskType.EPIC -> manager.createTask((EpicTask) task);
-                }
-            }
+            Arrays.stream(
+                            Files
+                                    .readString(filePath, fileEncoding)
+                                    .split(csvRowSeparator)
+                    )
+                    .forEach(line -> {
+                        Task task = deserializeTask(line);
+                        switch (getTaskType(task)) {
+                            case TaskType.REGULAR -> manager.createTask(task);
+                            case TaskType.SUB -> manager.createTask((SubTask) task);
+                            case TaskType.EPIC -> manager.createTask((EpicTask) task);
+                        }
+                    });
         } catch (Exception e) {
             throw new ManagerLoadException(e.getMessage());
         }
@@ -138,6 +147,8 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
      * - 3: Status
      * - 4: Description
      * - 5: Epic ID
+     * - 6: Timestamp of start time
+     * - 7: Minutes of duration
      */
     private String serializeTask(Task task) {
         return String.join(
@@ -148,12 +159,14 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
                         task.getName(),
                         task.getStatus().name(),
                         task.getDescription(),
-                        getEpicReference(task)
+                        getEpicReference(task),
+                        String.valueOf(task.getStartTime().toEpochSecond(ZoneOffset.UTC)),
+                        String.valueOf(task.getDuration().toMinutes())
                 });
     }
 
     private static Task deserializeTask(String serializedTask) {
-        String[] attributes = serializedTask.trim().split(csvColumnSeparator, 6);
+        String[] attributes = serializedTask.trim().split(csvColumnSeparator, 8);
 
         int id = Integer.parseInt(attributes[0]);
         TaskType type = TaskType.valueOf(attributes[1]);
@@ -161,10 +174,18 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
         TaskStatus status = TaskStatus.valueOf(attributes[3]);
         String description = attributes[4];
         int epicId = attributes[5].isEmpty() ? 0 : Integer.parseInt(attributes[5]);
+        LocalDateTime startTime = LocalDateTime.ofEpochSecond(
+                attributes[6].isEmpty() ? 0 : Long.parseLong(attributes[6]),
+                0,
+                ZoneOffset.UTC
+        );
+        Duration duration = Duration.ofMinutes(
+                attributes[7].isEmpty() ? 0 : Integer.parseInt(attributes[7])
+        );
 
         Task task = switch (type) {
-            case TaskType.REGULAR -> new Task(id, name, description);
-            case TaskType.SUB -> new SubTask(id, epicId, name, description);
+            case TaskType.REGULAR -> new Task(id, name, description, startTime, duration);
+            case TaskType.SUB -> new SubTask(id, epicId, name, description, startTime, duration);
             case TaskType.EPIC -> new EpicTask(id, name, description);
         };
 

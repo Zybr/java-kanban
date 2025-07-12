@@ -1,28 +1,34 @@
 package models.managers.filebacked;
 
+import models.factories.TasksFactory;
+import models.managers.AbstractTaskManagerTest;
 import models.managers.Managers;
-import models.managers.inmemory.InMemoryTaskManagerTest;
+import models.managers.TaskManager;
+import models.managers.filebacked.exceptions.ManagerLoadException;
 import models.tasks.EpicTask;
 import models.tasks.SubTask;
 import models.tasks.Task;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @see FileBackedTaskManager
  */
-public class FileBackedTaskManagerTest extends InMemoryTaskManagerTest {
+public class FileBackedTaskManagerTest extends AbstractTaskManagerTest {
     private final Managers managers = new Managers();
 
-    @BeforeEach
-    public void initManager() {
-        manager = managers.getfileBackedTaskManager();
+    @Override
+    protected TaskManager makeManager() {
+        return managers.getfileBackedTaskManager();
     }
 
     @AfterEach
@@ -55,9 +61,10 @@ public class FileBackedTaskManagerTest extends InMemoryTaskManagerTest {
 
         FileBackedTaskManager managerA = managers.getfileBackedTaskManager();
 
-        Task task = managerA.createTask(new Task(0, "Task", ""));
-        EpicTask epicTask = managerA.createTask(new EpicTask(0, "Epic", ""));
-        SubTask subTask = managerA.createTask(new SubTask(0, epicTask.getId(), "Sub", ""));
+        Task task = managerA.createTask(TasksFactory.makeTask());
+        EpicTask epicTask = managerA.createTask(TasksFactory.makeEpic());
+        SubTask subTask = managerA.createTask(TasksFactory.makeSub(epicTask.getId()));
+        epicTask = managerA.getEpicTask(epicTask.getId()).orElseThrow(); // Refresh after adding Sub
 
         // Read saved tasks from the same file using another Manager
 
@@ -79,5 +86,20 @@ public class FileBackedTaskManagerTest extends InMemoryTaskManagerTest {
 
         // Remove the file
         managerA.removeAllTasks();
+    }
+
+    @Test
+    public void shouldThrowExceptionForInvalidFileContent() throws IOException {
+        String filePath = managers
+                .getfileBackedTaskManager()
+                .getFullFileName();
+        Files.writeString(
+                Path.of(filePath),
+                "invalid;task;row"
+        );
+        assertThrows(
+                ManagerLoadException.class,
+                () -> managers.getfileBackedTaskManager(filePath)
+        );
     }
 }

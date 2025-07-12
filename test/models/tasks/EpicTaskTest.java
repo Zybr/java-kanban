@@ -1,5 +1,6 @@
 package models.tasks;
 
+import models.factories.TasksFactory;
 import models.managers.Managers;
 import models.managers.TaskManager;
 import org.junit.jupiter.api.Assertions;
@@ -33,16 +34,23 @@ class EpicTaskTest {
     @Test
     public void shouldNotSetSubAsEpic() {
         // Create Epic
-        manager.createTask(new EpicTask(0, "Epic A", ""));
+        manager.createTask(TasksFactory.makeEpic());
         EpicTask epicTaskA = manager.getEpicTasks().getFirst();
 
         // Create Sub
-        manager.createTask(new SubTask(0, epicTaskA.getId(), "Sub A", ""));
+        manager.createTask(TasksFactory.makeSub(epicTaskA.getId()));
         SubTask subTask = manager.getSubTasks().getFirst();
         Assertions.assertEquals(epicTaskA.getId(), subTask.getEpicId()); // The epic ID is correct
 
         // Try to change the epic ID
-        manager.updateTask(new SubTask(subTask.getId(), subTask.getId(), subTask.getName(), subTask.getDescription()));
+        manager.updateTask(new SubTask(
+                subTask.getId(),
+                subTask.getId(),
+                subTask.getName(),
+                subTask.getDescription(),
+                subTask.getStartTime(),
+                subTask.getDuration()
+        ));
         subTask = manager.getSubTasks().getFirst();
         Assertions.assertEquals(epicTaskA.getId(), subTask.getEpicId()); // The epic ID is still the same
     }
