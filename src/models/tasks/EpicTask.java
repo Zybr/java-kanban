@@ -1,5 +1,8 @@
 package models.tasks;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+
 public class EpicTask extends Task {
     public EpicTask(
             int id,
@@ -7,6 +10,16 @@ public class EpicTask extends Task {
             String description
     ) {
         super(id, name, description);
+    }
+
+    public EpicTask(
+            int id,
+            String name,
+            String description,
+            LocalDateTime startTime,
+            Duration duration
+    ) {
+        super(id, name, description, startTime, duration);
     }
 
     public void fill(EpicTask task) {
@@ -18,7 +31,9 @@ public class EpicTask extends Task {
         EpicTask epicTask = new EpicTask(
                 getId(),
                 getName(),
-                getDescription()
+                getDescription(),
+                getStartTime(),
+                getDuration()
         );
         epicTask.setStatus(getStatus());
 

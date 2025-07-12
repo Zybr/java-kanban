@@ -1,5 +1,8 @@
 package models.tasks;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+
 public class SubTask extends Task {
     private final int epicId;
 
@@ -7,9 +10,11 @@ public class SubTask extends Task {
             int id,
             int epicId,
             String name,
-            String description
+            String description,
+            LocalDateTime startTime,
+            Duration duration
     ) {
-        super(id, name, description);
+        super(id, name, description, startTime, duration);
         this.epicId = epicId;
     }
 
@@ -24,6 +29,8 @@ public class SubTask extends Task {
         this.setName(task.getName());
         this.setDescription(task.getDescription());
         this.setStatus(task.getStatus());
+        this.setStartTime(task.getStartTime());
+        this.setDuration(task.getDuration());
     }
 
     public SubTask copy() {
@@ -31,7 +38,9 @@ public class SubTask extends Task {
                 getId(),
                 getEpicId(),
                 getName(),
-                getDescription()
+                getDescription(),
+                getStartTime(),
+                getDuration()
         );
         subTask.setStatus(getStatus());
 
