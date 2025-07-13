@@ -157,15 +157,19 @@ public abstract class AbstractTaskManagerTest {
         subB.setStartTime(LocalDateTime.now().plusDays(5));
         subB = manager.createTask(subB);
         assertEquals(
-                Duration.between(subA.getStartTime(), subB.getEndTime()),
-                manager.getEpicTask(epic.getId()).orElseThrow().getDuration()
+                subA
+                        .getDuration()
+                        .plus(subB.getDuration()),
+                manager.getEpicTask(epic.getId())
+                        .orElseThrow()
+                        .getDuration()
         );
 
         // Move start time
         subA.setStartTime(LocalDateTime.now().minusDays(1));
         manager.updateTask(subA);
         assertEquals(
-                Duration.between(subA.getStartTime(), subB.getEndTime()),
+                subA.getDuration().plus(subB.getDuration()),
                 manager.getEpicTask(epic.getId()).orElseThrow().getDuration()
         );
 
@@ -173,7 +177,7 @@ public abstract class AbstractTaskManagerTest {
         subB.setDuration(subB.getDuration().plusDays(1));
         manager.updateTask(subB);
         assertEquals(
-                Duration.between(subA.getStartTime(), subB.getEndTime()),
+                subA.getDuration().plus(subB.getDuration()),
                 manager.getEpicTask(epic.getId()).orElseThrow().getDuration()
         );
 
@@ -512,6 +516,42 @@ public abstract class AbstractTaskManagerTest {
                         .stream()
                         .map(Task::getId)
                         .collect(Collectors.toCollection(ArrayList::new))
+        );
+    }
+
+    @Test
+    public void shouldNotPrioritizeTasksWithoutStartTime() {
+        EpicTask epic = manager.createTask(TasksFactory.makeEpic());
+
+        Task task = TasksFactory.makeTask();
+        task.setStartTime(LocalDateTime.MIN);
+        manager.createTask(task);
+
+        Task subTask = TasksFactory.makeSub(epic.getId());
+        subTask.setStartTime(LocalDateTime.MIN);
+        manager.createTask(subTask);
+
+        assertEquals(
+                0,
+                manager.getPrioritizedTasks().size()
+        );
+    }
+
+    @Test
+    public void shouldNotPrioritizeTasksWithoutDuration() {
+        EpicTask epic = manager.createTask(TasksFactory.makeEpic());
+
+        Task task = TasksFactory.makeTask();
+        task.setDuration(Duration.ZERO);
+        manager.createTask(task);
+
+        Task subTask = TasksFactory.makeSub(epic.getId());
+        subTask.setDuration(Duration.ZERO);
+        manager.createTask(subTask);
+
+        assertEquals(
+                0,
+                manager.getPrioritizedTasks().size()
         );
     }
 

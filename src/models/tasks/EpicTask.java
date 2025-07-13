@@ -4,6 +4,8 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class EpicTask extends Task {
+    private LocalDateTime endTime = LocalDateTime.MIN;
+
     public EpicTask(
             int id,
             String name,
@@ -17,9 +19,16 @@ public class EpicTask extends Task {
             String name,
             String description,
             LocalDateTime startTime,
-            Duration duration
+            Duration duration,
+            LocalDateTime endTime
     ) {
         super(id, name, description, startTime, duration);
+        this.endTime = endTime;
+    }
+
+    @Override
+    public LocalDateTime getEndTime() {
+        return endTime;
     }
 
     public void fill(EpicTask task) {
@@ -33,7 +42,8 @@ public class EpicTask extends Task {
                 getName(),
                 getDescription(),
                 getStartTime(),
-                getDuration()
+                getDuration(),
+                getEndTime()
         );
         epicTask.setStatus(getStatus());
 

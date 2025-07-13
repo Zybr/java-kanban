@@ -216,8 +216,6 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void updateTask(EpicTask attributes) {
-        checkIntersection(attributes);
-
         epicTasks.get(attributes.getId())
                 .fill(attributes);
     }
@@ -297,10 +295,13 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     private Duration calculateEpicDuration(int epicId) {
-        return Duration.between(
-                calculateEpicStartTime(epicId),
-                calculateEpicEndTime(epicId)
-        );
+        return getEpicSubTasks(epicId)
+                .stream()
+                .reduce(
+                        Duration.ZERO,
+                        (duration, task) -> duration.plus(task.getDuration()),
+                        (Duration::plus)
+                );
     }
 
     private LocalDateTime calculateEpicEndTime(int epicId) {
@@ -314,7 +315,10 @@ public class InMemoryTaskManager implements TaskManager {
     private void prioritizeTask(Task task) {
         this.deprioritizeTask(task);
 
-        if (!task.getStartTime().isEqual(LocalDateTime.MIN)) {
+        if (
+                !task.getStartTime().isEqual(LocalDateTime.MIN)
+                        && !task.getDuration().isZero()         // <--
+        ) {
             this.prioritizedTasks.add(task);
         }
     }
