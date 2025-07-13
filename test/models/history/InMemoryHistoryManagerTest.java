@@ -1,5 +1,6 @@
 package models.history;
 
+import models.factories.TasksFactory;
 import models.managers.Managers;
 import models.tasks.EpicTask;
 import models.tasks.SubTask;
@@ -9,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @see InMemoryHistoryManager
@@ -38,6 +39,11 @@ class InMemoryHistoryManagerTest {
     @Test
     public void shouldRemoveTask() {
         InMemoryHistoryManager manager = (InMemoryHistoryManager) Managers.getDefaultHistory();
+        assertEquals(
+                List.of(),
+                manager.getHistory()
+        );
+
         List<Task> tasks = fillHistory(manager);
         manager.remove(tasks.get(1).getId());
 
@@ -62,15 +68,15 @@ class InMemoryHistoryManagerTest {
 
         // Make tasks
         // Regular
-        Task task = new Task(1, "Task", "Task Desc");
+        Task task = TasksFactory.makeTask();
         Task originalTask = task.copy();
         manager.add(task);
         // Epic
-        EpicTask epicTask = new EpicTask(2, "Epic", "Epic Desc");
+        EpicTask epicTask = TasksFactory.makeEpic();
         EpicTask originalEpicTask = epicTask.copy();
         manager.add(epicTask);
         // Sub
-        SubTask subTask = new SubTask(3, epicTask.getId(), "Sub", "Sub Desc");
+        SubTask subTask = TasksFactory.makeSub(epicTask.getId());
         SubTask originalSubTask = subTask.copy();
         manager.add(subTask);
 
@@ -128,7 +134,7 @@ class InMemoryHistoryManagerTest {
         List<Task> tasks = new ArrayList<>();
 
         for (int id = 0; id <= 2; id++) {
-            Task task = new Task(id, "Task " + id, "Task Desc " + id);
+            Task task = TasksFactory.makeTask(id);
             manager.add(task);
             tasks.add(task);
         }
