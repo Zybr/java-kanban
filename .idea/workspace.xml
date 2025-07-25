@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37ff85c7-1533-4c8d-9bd8-430e7b853337" name="Changes" comment="Sprint 8 /">
+    <list default="true" id="37ff85c7-1533-4c8d-9bd8-430e7b853337" name="Changes" comment="Sprint 9 / Web API">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/managers/inmemory/InMemoryTaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/managers/inmemory/InMemoryTaskManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/models/managers/AbstractTaskManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/models/managers/AbstractTaskManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/http/HttpTaskServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/http/HttpTaskServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +67,9 @@
     &quot;repository&quot;: &quot;java-kanban&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -82,6 +84,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.HttpTaskServer.executor": "Debug",
     "Application.Main.executor": "Run",
     "Application.TaskTest.executor": "Run",
     "DefaultPlantUmlFileTemplate": "UML Class",
@@ -89,6 +92,13 @@
     "JUnit.All in java-kanban.executor": "Run",
     "JUnit.EpicTaskTest.executor": "Run",
     "JUnit.EpicTaskTest.shouldNotAddEpicAsSubTask.executor": "Run",
+    "JUnit.EpicsHandlerTest.executor": "Run",
+    "JUnit.EpicsHandlerTest.shouldDeleteTask.executor": "Run",
+    "JUnit.EpicsHandlerTest.shouldGetSubTask.executor": "Run",
+    "JUnit.EpicsHandlerTest.shouldGetSubTaskNotFound.executor": "Run",
+    "JUnit.EpicsHandlerTest.shouldGetTasks.executor": "Run",
+    "JUnit.EpicsHandlerTest.shouldNotFoundTask.executor": "Run",
+    "JUnit.EpicsHandlerTest.shouldPostTask.executor": "Run",
     "JUnit.FileBackedTaskManagerTest and 1 more.executor": "Run",
     "JUnit.FileBackedTaskManagerTest,shouldNotPrioritizeTasksWithoutDuration and 1 more.executor": "Run",
     "JUnit.FileBackedTaskManagerTest,shouldNotPrioritizeTasksWithoutStartTime and 1 more.executor": "Run",
@@ -96,6 +106,9 @@
     "JUnit.FileBackedTaskManagerTest.shouldGetFullFileName.executor": "Run",
     "JUnit.FileBackedTaskManagerTest.shouldSaveAndLoadTasks.executor": "Run",
     "JUnit.FileBackedTaskManagerTest.shouldThrowExceptionForInvalidFile.executor": "Run",
+    "JUnit.GetTasksHandlerTest.shouldProvideTasks.executor": "Run",
+    "JUnit.HistoryHandlerTest.executor": "Run",
+    "JUnit.HistoryHandlerTest.shouldGetHistory.executor": "Run",
     "JUnit.InMemoryHistoryManagerTest.executor": "Run",
     "JUnit.InMemoryHistoryManagerTest.shouldAddTask.executor": "Run",
     "JUnit.InMemoryHistoryManagerTest.shouldNotChangeHistoryByLink.executor": "Run",
@@ -120,6 +133,12 @@
     "JUnit.InMemoryTaskManagerTest.shouldNotTaskBeChangeableByLink.executor": "Run",
     "JUnit.InMemoryTaskManagerTest.shouldRemoveCascadingRemove.executor": "Run",
     "JUnit.ManagersTest.shouldGetDefaultManger.executor": "Run",
+    "JUnit.PrioritizedHandlerTest.executor": "Run",
+    "JUnit.PrioritizedHandlerTest.shouldGetPrioritized.executor": "Run",
+    "JUnit.SubTasksHandlerTest.executor": "Run",
+    "JUnit.SubTasksHandlerTest.shouldDeleteTask.executor": "Run",
+    "JUnit.SubTasksHandlerTest.shouldGetTask.executor": "Run",
+    "JUnit.TaskHandlerTest.shouldProvideTasks.executor": "Run",
     "JUnit.TaskNodesListTest.executor": "Run",
     "JUnit.TaskNodesListTest.shouldAddTask.executor": "Run",
     "JUnit.TaskNodesListTest.shouldRemoveNode.executor": "Run",
@@ -127,6 +146,15 @@
     "JUnit.TaskTest.executor": "Run",
     "JUnit.TaskTest.shouldCalculateEndTime.executor": "Run",
     "JUnit.TaskTest.shouldCompareById.executor": "Run",
+    "JUnit.TasksHandlerTest.executor": "Run",
+    "JUnit.TasksHandlerTest.shouldDeleteTask.executor": "Run",
+    "JUnit.TasksHandlerTest.shouldGetTask.executor": "Debug",
+    "JUnit.TasksHandlerTest.shouldNotFoundTask.executor": "Run",
+    "JUnit.TasksHandlerTest.shouldPostCreateTask.executor": "Debug",
+    "JUnit.TasksHandlerTest.shouldPostTask.executor": "Run",
+    "JUnit.TasksHandlerTest.shouldPostUpdateTask.executor": "Run",
+    "JUnit.TasksHandlerTest.shouldRejectIntersectedTask.executor": "Run",
+    "JUnit.TasksHandlerTest.shouldRejectPostUpdateIntersection.executor": "Run",
     "JUnit.models in java-kanban.executor": "Run",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
@@ -135,10 +163,13 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "create.test.in.the.same.root": "true",
-    "git-widget-placeholder": "#6 on sprint__8-solution-time-and-duration",
+    "git-widget-placeholder": "sprint__9-solution-http-api",
     "last_directory_selection": "/home/mike/projects/private/java/hw/java-kanban/tests",
-    "last_opened_file_path": "/home/mike/projects/private/java/hw/java-kanban/plan",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.testRunning"
+    "last_opened_file_path": "/home/mike/projects/private/java/hw/m1-t25-api/lib/gson-2.9.0.jar",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.keymap"
   },
   "keyToStringList": {
     "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
@@ -168,11 +199,27 @@
       <recent name="tests" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="http.handlers" />
+      <recent name="http.tokens" />
+      <recent name="http.adapters" />
       <recent name="models.managers" />
       <recent name="models.managers.filebacked.exceptions" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.FileBackedTaskManagerTest and 1 more">
+  <component name="RunManager" selected="JUnit.All in java-kanban">
+    <configuration name="HttpTaskServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="http.HttpTaskServer" />
+      <module name="java-kanban" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="http.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="All in java-kanban" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java-kanban" />
       <option name="PACKAGE_NAME" value="" />
@@ -181,87 +228,60 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FileBackedTaskManagerTest and 1 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PrioritizedHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java-kanban" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="models.managers.*" />
+          <option name="PATTERN" value="http.handlers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="models.managers" />
-      <option name="MAIN_CLASS_NAME" value="models.managers.AbstractTaskManagerTest" />
-      <option name="TEST_OBJECT" value="pattern" />
-      <patterns>
-        <pattern testClass="models.managers.filebacked.FileBackedTaskManagerTest" />
-        <pattern testClass="models.managers.inmemory.InMemoryTaskManagerTest" />
-      </patterns>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FileBackedTaskManagerTest,shouldNotPrioritizeTasksWithoutDuration and 1 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="java-kanban" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="models.managers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="models.managers" />
-      <option name="MAIN_CLASS_NAME" value="models.managers.AbstractTaskManagerTest" />
-      <option name="METHOD_NAME" value="shouldNotPrioritizeTasksWithoutDuration" />
-      <option name="TEST_OBJECT" value="pattern" />
-      <patterns>
-        <pattern testClass="models.managers.filebacked.FileBackedTaskManagerTest,shouldNotPrioritizeTasksWithoutDuration" />
-        <pattern testClass="models.managers.inmemory.InMemoryTaskManagerTest,shouldNotPrioritizeTasksWithoutDuration" />
-      </patterns>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FileBackedTaskManagerTest,shouldNotPrioritizeTasksWithoutStartTime and 1 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="java-kanban" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="models.managers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="models.managers" />
-      <option name="MAIN_CLASS_NAME" value="models.managers.AbstractTaskManagerTest" />
-      <option name="METHOD_NAME" value="shouldNotPrioritizeTasksWithoutStartTime" />
-      <option name="TEST_OBJECT" value="pattern" />
-      <patterns>
-        <pattern testClass="models.managers.filebacked.FileBackedTaskManagerTest,shouldNotPrioritizeTasksWithoutStartTime" />
-        <pattern testClass="models.managers.inmemory.InMemoryTaskManagerTest,shouldNotPrioritizeTasksWithoutStartTime" />
-      </patterns>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="InMemoryTaskManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="java-kanban" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="models.managers.inmemory.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="models.managers.inmemory" />
-      <option name="MAIN_CLASS_NAME" value="models.managers.inmemory.InMemoryTaskManagerTest" />
+      <option name="PACKAGE_NAME" value="http.handlers" />
+      <option name="MAIN_CLASS_NAME" value="http.handlers.PrioritizedHandlerTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PrioritizedHandlerTest.shouldGetPrioritized" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java-kanban" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="http.handlers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="http.handlers" />
+      <option name="MAIN_CLASS_NAME" value="http.handlers.PrioritizedHandlerTest" />
+      <option name="METHOD_NAME" value="shouldGetPrioritized" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TasksHandlerTest.shouldPostCreateTask" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java-kanban" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="http.handlers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="http.handlers" />
+      <option name="MAIN_CLASS_NAME" value="http.handlers.TasksHandlerTest" />
+      <option name="METHOD_NAME" value="shouldPostCreateTask" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.FileBackedTaskManagerTest and 1 more" />
-        <item itemvalue="JUnit.FileBackedTaskManagerTest,shouldNotPrioritizeTasksWithoutDuration and 1 more" />
-        <item itemvalue="JUnit.FileBackedTaskManagerTest,shouldNotPrioritizeTasksWithoutStartTime and 1 more" />
-        <item itemvalue="JUnit.FileBackedTaskManagerTest,shouldNotPrioritizeTasksWithoutStartTime and 1 more" />
         <item itemvalue="JUnit.All in java-kanban" />
+        <item itemvalue="Application.HttpTaskServer" />
+        <item itemvalue="JUnit.TasksHandlerTest.shouldPostCreateTask" />
+        <item itemvalue="JUnit.PrioritizedHandlerTest" />
+        <item itemvalue="JUnit.PrioritizedHandlerTest.shouldGetPrioritized" />
       </list>
     </recent_temporary>
   </component>
@@ -273,182 +293,6 @@
       <option name="presentableId" value="Default" />
       <updated>1740130924292</updated>
       <workItem from="1740130925545" duration="42000" />
-    </task>
-    <task id="LOCAL-00022" summary="Sprint 6 / Unique history tasks using custom Double Linked List">
-      <option name="closed" value="true" />
-      <created>1749901117922</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1749901117922</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Sprint 6 / Unique history tasks using custom Double Linked List">
-      <option name="closed" value="true" />
-      <created>1749901513784</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1749901513784</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Sprint 6 / Extra scenario. Exclude removing tasks from the history.">
-      <option name="closed" value="true" />
-      <created>1749904153097</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1749904153097</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Sprint 6 / Code style fix">
-      <option name="closed" value="true" />
-      <created>1749904586350</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1749904586350</updated>
-    </task>
-    <task id="LOCAL-00026" summary="Sprint 6 / CI fixes">
-      <option name="closed" value="true" />
-      <created>1749904710279</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1749904710279</updated>
-    </task>
-    <task id="LOCAL-00027" summary="Sprint 6 /">
-      <option name="closed" value="true" />
-      <created>1749914699015</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1749914699015</updated>
-    </task>
-    <task id="LOCAL-00028" summary="Sprint 6 /">
-      <option name="closed" value="true" />
-      <created>1749914902240</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1749914902240</updated>
-    </task>
-    <task id="LOCAL-00029" summary="Sprint 6 /">
-      <option name="closed" value="true" />
-      <created>1749916018717</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1749916018717</updated>
-    </task>
-    <task id="LOCAL-00030" summary="Sprint 6 / Code grooming">
-      <option name="closed" value="true" />
-      <created>1749917299695</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1749917299695</updated>
-    </task>
-    <task id="LOCAL-00031" summary="Sprint 6 / Code grooming">
-      <option name="closed" value="true" />
-      <created>1749917374979</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1749917374979</updated>
-    </task>
-    <task id="LOCAL-00032" summary="Sprint 7 /">
-      <option name="closed" value="true" />
-      <created>1750575423308</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1750575423308</updated>
-    </task>
-    <task id="LOCAL-00033" summary="Sprint 7 /">
-      <option name="closed" value="true" />
-      <created>1750577186300</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1750577186300</updated>
-    </task>
-    <task id="LOCAL-00034" summary="Sprint 7 /">
-      <option name="closed" value="true" />
-      <created>1750742464844</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1750742464844</updated>
-    </task>
-    <task id="LOCAL-00035" summary="Sprint 7 /">
-      <option name="closed" value="true" />
-      <created>1750743313054</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1750743313054</updated>
-    </task>
-    <task id="LOCAL-00036" summary="Sprint 7 /">
-      <option name="closed" value="true" />
-      <created>1750774303774</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1750774303774</updated>
-    </task>
-    <task id="LOCAL-00037" summary="Sprint 7 /">
-      <option name="closed" value="true" />
-      <created>1750775104066</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1750775104066</updated>
-    </task>
-    <task id="LOCAL-00038" summary="Sprint 7 /">
-      <option name="closed" value="true" />
-      <created>1750778659668</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1750778659668</updated>
-    </task>
-    <task id="LOCAL-00039" summary="Sprint 7 /">
-      <option name="closed" value="true" />
-      <created>1750778685390</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1750778685390</updated>
-    </task>
-    <task id="LOCAL-00040" summary="Sprint 7 /">
-      <option name="closed" value="true" />
-      <created>1750779173090</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1750779173090</updated>
-    </task>
-    <task id="LOCAL-00041" summary="Sprint 7 / File backed Task Manager">
-      <option name="closed" value="true" />
-      <created>1750779728903</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1750779728903</updated>
-    </task>
-    <task id="LOCAL-00042" summary="Sprint 7 / File backed Task Manager">
-      <option name="closed" value="true" />
-      <created>1750781189871</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1750781189871</updated>
-    </task>
-    <task id="LOCAL-00043" summary="Sprint 7 / File backed Task Manager">
-      <option name="closed" value="true" />
-      <created>1750781527800</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1750781527800</updated>
     </task>
     <task id="LOCAL-00044" summary="Sprint 7 / Remove unchecked exceptions; make static loading.">
       <option name="closed" value="true" />
@@ -666,7 +510,183 @@
       <option name="project" value="LOCAL" />
       <updated>1752398379474</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="Sprint 9 /">
+      <option name="closed" value="true" />
+      <created>1753116691086</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1753116691086</updated>
+    </task>
+    <task id="LOCAL-00072" summary="Sprint 9 /">
+      <option name="closed" value="true" />
+      <created>1753203147492</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1753203147493</updated>
+    </task>
+    <task id="LOCAL-00073" summary="Sprint 9 /">
+      <option name="closed" value="true" />
+      <created>1753203250229</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1753203250229</updated>
+    </task>
+    <task id="LOCAL-00074" summary="Sprint 9 /">
+      <option name="closed" value="true" />
+      <created>1753281699099</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1753281699100</updated>
+    </task>
+    <task id="LOCAL-00075" summary="Sprint 9 /">
+      <option name="closed" value="true" />
+      <created>1753281707233</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1753281707233</updated>
+    </task>
+    <task id="LOCAL-00076" summary="Sprint 9 /">
+      <option name="closed" value="true" />
+      <created>1753284288436</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1753284288436</updated>
+    </task>
+    <task id="LOCAL-00077" summary="Sprint 9 / Epics">
+      <option name="closed" value="true" />
+      <created>1753286353879</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1753286353879</updated>
+    </task>
+    <task id="LOCAL-00078" summary="Sprint 9 / Epics">
+      <option name="closed" value="true" />
+      <created>1753367782941</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1753367782941</updated>
+    </task>
+    <task id="LOCAL-00079" summary="Sprint 9 / Epics">
+      <option name="closed" value="true" />
+      <created>1753368086907</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1753368086907</updated>
+    </task>
+    <task id="LOCAL-00080" summary="Sprint 9 / Epics">
+      <option name="closed" value="true" />
+      <created>1753368187564</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1753368187564</updated>
+    </task>
+    <task id="LOCAL-00081" summary="Sprint 9 / Epics">
+      <option name="closed" value="true" />
+      <created>1753369219305</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1753369219305</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Sprint 9 / Epics">
+      <option name="closed" value="true" />
+      <created>1753373587167</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1753373587167</updated>
+    </task>
+    <task id="LOCAL-00083" summary="Sprint 9 / Epics">
+      <option name="closed" value="true" />
+      <created>1753458644866</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1753458644867</updated>
+    </task>
+    <task id="LOCAL-00084" summary="Sprint 9 / Epics">
+      <option name="closed" value="true" />
+      <created>1753459606363</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1753459606363</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Sprint 9 / Epics">
+      <option name="closed" value="true" />
+      <created>1753459943544</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1753459943544</updated>
+    </task>
+    <task id="LOCAL-00086" summary="Sprint 9 / Epics">
+      <option name="closed" value="true" />
+      <created>1753461093346</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1753461093346</updated>
+    </task>
+    <task id="LOCAL-00087" summary="Sprint 9 / Epics">
+      <option name="closed" value="true" />
+      <created>1753461269683</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1753461269683</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Sprint 9 / Http">
+      <option name="closed" value="true" />
+      <created>1753461450993</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1753461450993</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Sprint 9 / Web API">
+      <option name="closed" value="true" />
+      <created>1753461464841</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1753461464841</updated>
+    </task>
+    <task id="LOCAL-00090" summary="Sprint 9 / Web API">
+      <option name="closed" value="true" />
+      <created>1753462401169</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1753462401169</updated>
+    </task>
+    <task id="LOCAL-00091" summary="Sprint 9 / Web API">
+      <option name="closed" value="true" />
+      <created>1753462422492</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1753462422492</updated>
+    </task>
+    <task id="LOCAL-00092" summary="Sprint 9 / Web API">
+      <option name="closed" value="true" />
+      <created>1753462444189</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1753462444189</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -710,10 +730,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Test coverage" />
-    <MESSAGE value="Sprint 5 / Extract TaskManager interface" />
-    <MESSAGE value="Sprint 5 / History Manager" />
-    <MESSAGE value="Sprint 5 / Required tests" />
     <MESSAGE value="Sprint 5 / Additional tests" />
     <MESSAGE value="Sprint 5 /" />
     <MESSAGE value="Sprint 5 / History; Managers provider; Test coverage;" />
@@ -735,6 +751,17 @@
     <MESSAGE value="Sprint 8 / Optional Tasks" />
     <MESSAGE value="Sprint 8 / Prioritized and Optional Tasks" />
     <MESSAGE value="Sprint 8 /" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sprint 8 /" />
+    <MESSAGE value="Sprint 9 /" />
+    <MESSAGE value="Sprint 9 / Epics" />
+    <MESSAGE value="Sprint 9 / Http" />
+    <MESSAGE value="Sprint 9 / Web API" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sprint 9 / Web API" />
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="jdk.internal.net.http.HttpResponseImpl" memberName="body" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>
