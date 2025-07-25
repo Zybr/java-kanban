@@ -14,21 +14,7 @@ public class TasksFactory {
     private static int lastEndHour = 0; // When the lastly default generated Task ends
 
     public static Task makeTask() {
-        return new Task(
-                makeId(),
-                "Task" + makeSuffix(),
-                makeDescription(),
-                makeStartTime(),
-                makeDuration()
-        );
-    }
-
-    public static Task makeTask(int startInHours, int endInHours) {
-        return setTimeRange(
-                makeTask(),
-                startInHours,
-                endInHours
-        );
+        return makeTask(0);
     }
 
     public static Task makeTask(int id) {
@@ -42,11 +28,7 @@ public class TasksFactory {
     }
 
     public static EpicTask makeEpic() {
-        return new EpicTask(
-                makeId(),
-                "Epic" + makeSuffix(),
-                makeDescription()
-        );
+        return makeEpic(0);
     }
 
     public static EpicTask makeEpic(int id) {
@@ -58,22 +40,7 @@ public class TasksFactory {
     }
 
     public static SubTask makeSub(int epicId) {
-        return new SubTask(
-                makeId(),
-                epicId,
-                "Sub" + makeSuffix(),
-                makeDescription(),
-                makeStartTime(),
-                makeDuration()
-        );
-    }
-
-    public static SubTask makeSub(int epicId, int startInHours, int endInHours) {
-        return setTimeRange(
-                makeSub(epicId),
-                startInHours,
-                endInHours
-        );
+        return makeSub(epicId, 0);
     }
 
     public static SubTask makeSub(int epicId, int id) {
@@ -99,10 +66,6 @@ public class TasksFactory {
                 )
         );
         return task;
-    }
-
-    private static int makeId() {
-        return rand.nextInt();
     }
 
     private static LocalDateTime makeStartTime() {

@@ -68,11 +68,11 @@ class InMemoryHistoryManagerTest {
 
         // Make tasks
         // Regular
-        Task task = TasksFactory.makeTask();
+        Task task = TasksFactory.makeTask(1);
         Task originalTask = task.copy();
         manager.add(task);
         // Epic
-        EpicTask epicTask = TasksFactory.makeEpic();
+        EpicTask epicTask = TasksFactory.makeEpic(10);
         EpicTask originalEpicTask = epicTask.copy();
         manager.add(epicTask);
         // Sub
