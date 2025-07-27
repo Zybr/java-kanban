@@ -2,6 +2,7 @@ package http.handlers;
 
 import com.google.gson.Gson;
 import http.HttpTaskServer;
+import http.serialization.SerializerFactory;
 import models.managers.TaskManager;
 import models.managers.inmemory.InMemoryTaskManager;
 import org.junit.jupiter.api.AfterEach;
@@ -14,10 +15,10 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class HttpTest {
-    TaskManager manager = new InMemoryTaskManager();
-    HttpTaskServer server = new HttpTaskServer(manager);
-    Gson serializer = server.getSerializer();
-    HttpClient client = HttpClient.newHttpClient();
+    protected final TaskManager manager = new InMemoryTaskManager();
+    protected final HttpTaskServer server = new HttpTaskServer(manager);
+    protected final Gson serializer = SerializerFactory.getSerializer();
+    protected final HttpClient client = HttpClient.newHttpClient();
 
     @BeforeEach
     protected void init() throws IOException {

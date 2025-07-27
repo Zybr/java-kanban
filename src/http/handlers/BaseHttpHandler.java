@@ -3,7 +3,9 @@ package http.handlers;
 import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import http.exceptions.MethodNotAllowedException;
 import http.exceptions.NotFoundException;
+import http.serialization.SerializerFactory;
 import models.managers.TaskManager;
 
 import java.io.IOException;
@@ -13,18 +15,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public abstract class BaseHttpHandler implements HttpHandler {
-    protected String basePath;
+    protected final String basePath;
     protected final TaskManager taskManager;
-    protected final Gson serializer;
+    protected final Gson serializer = SerializerFactory.getSerializer();
 
     public BaseHttpHandler(
             String basePath,
-            TaskManager taskManager,
-            Gson serializer
+            TaskManager taskManager
     ) {
         this.basePath = basePath;
         this.taskManager = taskManager;
-        this.serializer = serializer;
     }
 
     @Override
@@ -35,7 +35,9 @@ public abstract class BaseHttpHandler implements HttpHandler {
             sendNotFound(httpExchange, e.getMessage());
         } catch (IllegalArgumentException e) {
             sendNotAcceptable(httpExchange, e.getMessage());
-        } catch (Throwable e) {
+        } catch (MethodNotAllowedException e) {
+            sendMethodNotAllowed(httpExchange, e.getMessage());
+        } catch (Exception e) {
             sendServerError(httpExchange, e.getMessage());
         }
     }
@@ -52,6 +54,10 @@ public abstract class BaseHttpHandler implements HttpHandler {
 
     protected void sendNotFound(HttpExchange exchange, Object body) throws IOException {
         send(exchange, 404, body != null ? body : "Data was not found");
+    }
+
+    protected void sendMethodNotAllowed(HttpExchange exchange, Object body) throws IOException {
+        send(exchange, 405, body != null ? body : "Method not allowed");
     }
 
     protected void sendNotAcceptable(HttpExchange exchange, Object body) throws IOException {

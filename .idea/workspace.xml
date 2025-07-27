@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_INJECTED_CODE" value="false" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37ff85c7-1533-4c8d-9bd8-430e7b853337" name="Changes" comment="Sprint 9 / Web API">
+    <list default="true" id="37ff85c7-1533-4c8d-9bd8-430e7b853337" name="Changes" comment="Sprint 9 / Web API. Update errors handling and serializer providing.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/http/HttpTaskServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/http/HttpTaskServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/http/handlers/HttpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/http/handlers/HttpTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +71,7 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -163,12 +166,13 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "create.test.in.the.same.root": "true",
-    "git-widget-placeholder": "sprint__9-solution-http-api",
+    "git-widget-placeholder": "#7 on sprint__9-solution-http-api",
     "last_directory_selection": "/home/mike/projects/private/java/hw/java-kanban/tests",
     "last_opened_file_path": "/home/mike/projects/private/java/hw/m1-t25-api/lib/gson-2.9.0.jar",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "preferences.keymap"
   },
   "keyToStringList": {
@@ -199,11 +203,11 @@
       <recent name="tests" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="http.exceptions" />
       <recent name="http.handlers" />
       <recent name="http.tokens" />
       <recent name="http.adapters" />
       <recent name="models.managers" />
-      <recent name="models.managers.filebacked.exceptions" />
     </key>
   </component>
   <component name="RunManager" selected="JUnit.All in java-kanban">
@@ -293,46 +297,6 @@
       <option name="presentableId" value="Default" />
       <updated>1740130924292</updated>
       <workItem from="1740130925545" duration="42000" />
-    </task>
-    <task id="LOCAL-00044" summary="Sprint 7 / Remove unchecked exceptions; make static loading.">
-      <option name="closed" value="true" />
-      <created>1750819683799</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1750819683799</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Sprint 7 / Fix file rows parsing">
-      <option name="closed" value="true" />
-      <created>1750863055204</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1750863055204</updated>
-    </task>
-    <task id="LOCAL-00046" summary="Sprint 8 /">
-      <option name="closed" value="true" />
-      <created>1751982494156</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1751982494156</updated>
-    </task>
-    <task id="LOCAL-00047" summary="Sprint 8 /">
-      <option name="closed" value="true" />
-      <created>1751984966796</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1751984966796</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Sprint 8 /">
-      <option name="closed" value="true" />
-      <created>1751991850399</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1751991850399</updated>
     </task>
     <task id="LOCAL-00049" summary="Sprint 8 /">
       <option name="closed" value="true" />
@@ -686,7 +650,47 @@
       <option name="project" value="LOCAL" />
       <updated>1753462444189</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="Sprint 9 / Web API">
+      <option name="closed" value="true" />
+      <created>1753462843503</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1753462843503</updated>
+    </task>
+    <task id="LOCAL-00094" summary="Sprint 9 / Web API. Update errors handling and serializer providing.">
+      <option name="closed" value="true" />
+      <created>1753615990664</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1753615990665</updated>
+    </task>
+    <task id="LOCAL-00095" summary="Sprint 9 / Web API. Update errors handling and serializer providing.">
+      <option name="closed" value="true" />
+      <created>1753616162018</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1753616162018</updated>
+    </task>
+    <task id="LOCAL-00096" summary="Sprint 9 / Web API. Update errors handling and serializer providing.">
+      <option name="closed" value="true" />
+      <created>1753616372532</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1753616372532</updated>
+    </task>
+    <task id="LOCAL-00097" summary="Sprint 9 / Web API. Update errors handling and serializer providing.">
+      <option name="closed" value="true" />
+      <created>1753616651427</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1753616651427</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -730,7 +734,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Sprint 5 / Additional tests" />
     <MESSAGE value="Sprint 5 /" />
     <MESSAGE value="Sprint 5 / History; Managers provider; Test coverage;" />
     <MESSAGE value="Sprint 6 / Put idea files under gitignore" />
@@ -755,7 +758,8 @@
     <MESSAGE value="Sprint 9 / Epics" />
     <MESSAGE value="Sprint 9 / Http" />
     <MESSAGE value="Sprint 9 / Web API" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sprint 9 / Web API" />
+    <MESSAGE value="Sprint 9 / Web API. Update errors handling and serializer providing." />
+    <option name="LAST_COMMIT_MESSAGE" value="Sprint 9 / Web API. Update errors handling and serializer providing." />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

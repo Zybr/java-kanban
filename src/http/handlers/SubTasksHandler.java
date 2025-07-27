@@ -1,7 +1,7 @@
 package http.handlers;
 
-import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
+import http.exceptions.MethodNotAllowedException;
 import http.exceptions.NotFoundException;
 import models.managers.TaskManager;
 import models.tasks.SubTask;
@@ -13,10 +13,9 @@ import java.util.ArrayList;
 public class SubTasksHandler extends BaseHttpHandler {
     public SubTasksHandler(
             String basePath,
-            TaskManager taskManager,
-            Gson serializer
+            TaskManager taskManager
     ) {
-        super(basePath, taskManager, serializer);
+        super(basePath, taskManager);
     }
 
     @Override
@@ -43,7 +42,7 @@ public class SubTasksHandler extends BaseHttpHandler {
                     deleteTask(httpExchange);
                 }
             }
-            default -> throw new NotFoundException();
+            default -> throw new MethodNotAllowedException();
         }
     }
 

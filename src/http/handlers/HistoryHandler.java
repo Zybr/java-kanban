@@ -1,8 +1,7 @@
 package http.handlers;
 
-import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
-import http.exceptions.NotFoundException;
+import http.exceptions.MethodNotAllowedException;
 import models.managers.TaskManager;
 
 import java.io.IOException;
@@ -10,10 +9,9 @@ import java.io.IOException;
 public class HistoryHandler extends BaseHttpHandler {
     public HistoryHandler(
             String basePath,
-            TaskManager taskManager,
-            Gson serializer
-    ) {
-        super(basePath, taskManager, serializer);
+            TaskManager taskManager
+            ) {
+        super(basePath, taskManager);
     }
 
     @Override
@@ -24,7 +22,7 @@ public class HistoryHandler extends BaseHttpHandler {
         ) {
             getHistory(httpExchange);
         } else {
-            throw new NotFoundException();
+            throw new MethodNotAllowedException();
         }
     }
 

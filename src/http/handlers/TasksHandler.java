@@ -2,7 +2,9 @@ package http.handlers;
 
 import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
+import http.exceptions.MethodNotAllowedException;
 import http.exceptions.NotFoundException;
+import http.serialization.SerializerFactory;
 import models.managers.TaskManager;
 import models.tasks.Task;
 
@@ -11,12 +13,13 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class TasksHandler extends BaseHttpHandler {
+    private final Gson serializer = SerializerFactory.getSerializer();
+
     public TasksHandler(
             String basePath,
-            TaskManager taskManager,
-            Gson serializer
+            TaskManager taskManager
     ) {
-        super(basePath, taskManager, serializer);
+        super(basePath, taskManager);
     }
 
     @Override
@@ -43,7 +46,7 @@ public class TasksHandler extends BaseHttpHandler {
                     deleteTask(httpExchange);
                 }
             }
-            default -> throw new NotFoundException();
+            default -> throw new MethodNotAllowedException();
         }
     }
 
