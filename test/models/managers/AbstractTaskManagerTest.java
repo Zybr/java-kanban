@@ -1,5 +1,6 @@
 package models.managers;
 
+import assertions.TaskAssertions;
 import models.factories.TasksFactory;
 import models.tasks.EpicTask;
 import models.tasks.SubTask;
@@ -578,9 +579,9 @@ public abstract class AbstractTaskManagerTest {
                 .stream(intervals)
                 .map(
                         interval -> manager.createTask(
-                                TasksFactory.makeTask(
-                                        interval[0],
-                                        interval[1]
+                                TasksFactory.setTimeRange(
+                                        TasksFactory.makeTask(),
+                                        interval[0], interval[1]
                                 )
                         )
                 )
@@ -593,7 +594,8 @@ public abstract class AbstractTaskManagerTest {
             assertThrows(
                     IllegalArgumentException.class,
                     () -> manager.createTask(
-                            TasksFactory.makeTask(
+                            TasksFactory.setTimeRange(
+                                    TasksFactory.makeTask(),
                                     intersection[0],
                                     intersection[1]
                             )
@@ -603,8 +605,8 @@ public abstract class AbstractTaskManagerTest {
             assertThrows(
                     IllegalArgumentException.class,
                     () -> manager.createTask(
-                            TasksFactory.makeSub(
-                                    epic.getId(),
+                            TasksFactory.setTimeRange(
+                                    TasksFactory.makeSub(epic.getId()),
                                     intersection[0],
                                     intersection[1]
                             )
@@ -627,7 +629,8 @@ public abstract class AbstractTaskManagerTest {
             // Create NOT intersecting Task
             manager.removeTask(
                     manager.createTask(
-                                    TasksFactory.makeTask(
+                                    TasksFactory.setTimeRange(
+                                            TasksFactory.makeTask(),
                                             notIntersection[0],
                                             notIntersection[1]
                                     )
@@ -637,8 +640,8 @@ public abstract class AbstractTaskManagerTest {
             // Create NOT intersecting Sub Task
             manager.removeTask(
                     manager.createTask(
-                                    TasksFactory.makeSub(
-                                            epic.getId(),
+                                    TasksFactory.setTimeRange(
+                                            TasksFactory.makeSub(epic.getId()),
                                             notIntersection[0],
                                             notIntersection[1]
                                     )
@@ -661,12 +664,8 @@ public abstract class AbstractTaskManagerTest {
         assertEquals(name, task.getName());
     }
 
-    protected void assertEqualsByContent(Task taskA, Task taskB) {
-        assertEquals(taskA.getName(), taskB.getName());
-        assertEquals(taskA.getStatus(), taskB.getStatus());
-        assertEquals(taskA.getDescription(), taskB.getDescription());
-        assertEquals(taskA.getStartTime().getSecond(), taskB.getStartTime().getSecond());
-        assertEquals(taskA.getDuration().toMinutes(), taskB.getDuration().toMinutes());
+    public static void assertEqualsByContent(Task taskA, Task taskB) {
+        TaskAssertions.assertEqualByContent(taskA, taskB);
     }
 
     protected List<Integer> getTaskIds(List<Task> tasks) {

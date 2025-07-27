@@ -304,14 +304,6 @@ public class InMemoryTaskManager implements TaskManager {
                 );
     }
 
-    private LocalDateTime calculateEpicEndTime(int epicId) {
-        return getEpicSubTasks(epicId)
-                .stream()
-                .map(Task::getEndTime)
-                .max(LocalDateTime::compareTo)
-                .orElse(calculateEpicStartTime(epicId));
-    }
-
     private void prioritizeTask(Task task) {
         this.deprioritizeTask(task);
 
